@@ -57,7 +57,7 @@
                 bottom: -4px;
                 left: 0;
                 width: 100%;
-                border-bottom: 4px solid $newFurniture-active-dots-color;
+                border-bottom: 4px solid $newFurniture-active-line-color;
               }
             }
           }
@@ -74,7 +74,7 @@
         margin: 0;
         padding: 0 0 0 1rem;
         list-style: none;
-        background-color: #ffffff;
+        background-color: $newFurniture-dots-ul-bg;
         transform: translateY(15px);
 
         li {
@@ -86,12 +86,12 @@
             width: 13px;
             height: 13px;
             border-radius: 6px;
-            background-color: #e1e1e1;
+            background-color:$newFurniture-dots-bg;
             font-size: 0;
 
             &.active,
             &:hover {
-              background-color: $primary;
+              background-color: $newFurniture-active-dots-bg;
             }
           }
         }

@@ -59,6 +59,23 @@ $newFurniture-bottom-line-color: $color-grey-890;
 $newFurniture-text-left-color: $primary;
 $newFurniture-text-center-color: $color-grey-165;
 $newFurniture-active-line-color: $primary;
-$newFurniture-active-dots-color: $primary;
-$newFurniture-ul0bg: $primary;
+$newFurniture-active-dots-bg: $primary;
+$newFurniture-dots-bg: $color-grey-880;
+$newFurniture-dots-ul-bg: $white;
 
+//ProductSearch
+$productSearch-border-color: $color-grey-160;
+$productSearch-border-category-color: $color-grey-160;
+$productSearch-text-color: $color-grey-165;
+$productSearch-icon-color: $primary;
+$productSearch-placeholder-color: $color-grey-165;
+
+//CompanyClaim
+$companyClaim-bg: $color-grey-210;
+$companyClaim-number-color: $color-grey-850;
+$companyClaim-phone-color: $primary;
+$companyClaim-cartIcon-color: $primary;
+$companyClaim-cartBox-color: $white;
+$companyClaim-cartCounter-bg: $color-grey-210;
+$companyClaim-cartCounter-color: $color-grey-900;
+$companyClaim-cartIcon-hover-bg: $primary;
