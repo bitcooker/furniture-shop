@@ -1,13 +1,64 @@
 $base-padding: 24px;
 
+$white: #ffffff;
+$primary: #d58e32;
+
+$color-grey-960: #f4f5f7;
+$color-grey-900: rgb(224, 227, 237);
+$color-grey-880: #e1e1e1;
+$color-grey-890: #e2e2e2;
+$color-grey-850: rgb(216, 216, 216);
+$color-grey-710: #b6b6b6;
+$color-grey-660: rgb(169, 169, 169);
+$color-grey-260: #434343;
+$color-grey-210: #363636;
+$color-grey-165: #2a2a2a;
+$color-grey-160: #292929;
+$text-color: $color-grey-165;
+
 $header-topbar-bg: #434343;
 $header-bg: #363636;
 
 $footer-claim-bg: #2a2a2a;
 $footer-bg: #363636;
 
-$primary: #d58e32;
-
-$text-color: #2a2a2a;
-
 $form-border-color: #292929;
+
+
+
+//Button
+$button-bg: $color-grey-165;
+$button-color-text: $white;
+$button-bg-hover: $primary;
+
+//FeatureBox
+$featureBox-border-color: $color-grey-710;
+$featureBox-border-color-before: $color-grey-710;
+$featureBox-bg-before: $white;
+$featureBox-border-color-after: $color-grey-710;
+$featureBox-icon-color: $text-color;
+$featureBox-content-color:$color-grey-165 ;
+$featureBox-active-bg-color: $primary;
+$featureBox-active-border-color: $primary;
+$featureBox-active-icon-color: $white;
+$featureBox-active-content-color: $primary;
+
+//ProductBox
+$productBox-title: $primary;
+$productBox-bg: $white;
+$productBox-border-color: $color-grey-880;
+$productBox-photo-bg: $color-grey-960;
+$productBox-sale-bg: $color-grey-160;
+$productBox-sale-color: $white;
+$productBox-stairs-color: $color-grey-165;
+$productBox-line-border-color: $color-grey-165;
+$productBox-line-border-color-before: $primary;
+
+//NewFurniture
+$newFurniture-bottom-line-color: $color-grey-890;
+$newFurniture-text-left-color: $primary;
+$newFurniture-text-center-color: $color-grey-165;
+$newFurniture-active-line-color: $primary;
+$newFurniture-active-dots-color: $primary;
+$newFurniture-ul0bg: $primary;
+
