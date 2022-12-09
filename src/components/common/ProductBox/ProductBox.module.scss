@@ -13,6 +13,7 @@
       position: center;
       repeat: no-repeat;
     }
+
     overflow: hidden;
     align-items: flex-end;
 
@@ -32,11 +33,15 @@
       color: #ffffff;
       padding: 30px 15px 5px 15px;
     }
-
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .buttonsHidden {
+    display: flex;
+    visibility: hidden;
+    justify-content: space-between;
   }
 
   .content {
@@ -79,5 +84,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .isShownPrice {
+    background-color: $primary;
   }
 }

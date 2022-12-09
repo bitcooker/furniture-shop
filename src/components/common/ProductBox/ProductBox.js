@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
@@ -11,8 +11,14 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 
-const ProductBox = ({ name, price, promo, stars, image, category }) => (
-  <div className={styles.root}>
+
+const ProductBox = ({ name, price, promo, stars, image, category }) =>{
+  const [isShown, setIsShown] = useState(false);
+  return  (
+  <div className={styles.root}
+  onMouseEnter={() => setIsShown(true)}
+  onMouseLeave={() => setIsShown(false)}
+  >
     <div className={styles.photo}>
       <img
         className={styles.image}
@@ -20,46 +26,46 @@ const ProductBox = ({ name, price, promo, stars, image, category }) => (
         alt={`Furniture-${category}`}
       />
       {promo && <div className={styles.sale}>{promo}</div>}
-      <div className={styles.buttons}>
+      <div className={isShown ? styles.buttons : styles.buttonsHidden}>
         <Button variant='small'>Quick View</Button>
         <Button variant='small'>
           <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
         </Button>
       </div>
-    </div>
-    <div className={styles.content}>
-      <h5>{name}</h5>
-      <div className={styles.stars}>
-        {[1, 2, 3, 4, 5].map(i => (
-          <a key={i} href='#'>
-            {i <= stars ? (
-              <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-            ) : (
-              <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-            )}
-          </a>
-        ))}
+      </div>
+      <div className={styles.content}>
+        <h5>{name}</h5>
+        <div className={styles.stars}>
+          {[1, 2, 3, 4, 5].map(i => (
+            <a key={i} href='#'>
+              {i <= stars ? (
+                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+              ) : (
+                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div className={styles.line}></div>
+      <div className={styles.actions}>
+        <div className={styles.outlines}>
+          <Button variant='outline'>
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          </Button>
+          <Button variant='outline'>
+            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+          </Button>
+        </div>
+        <div>
+          <Button className={isShown ? styles.isShownPrice : undefined} variant='small'>
+            $ {price}
+          </Button>
+        </div>
       </div>
     </div>
-    <div className={styles.line}></div>
-    <div className={styles.actions}>
-      <div className={styles.outlines}>
-        <Button variant='outline'>
-          <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-        </Button>
-        <Button variant='outline'>
-          <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-        </Button>
-      </div>
-      <div className={styles.price}>
-        <Button noHover variant='small'>
-          $ {price}
-        </Button>
-      </div>
-    </div>
-  </div>
-);
-
+  );
+};
 ProductBox.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
