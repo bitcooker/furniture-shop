@@ -11,22 +11,27 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 
-const ProductBox = ({ name, price, promo, stars }) => {
+
+const ProductBox = ({ name, price, promo, stars, image, category }) =>{
   const [isShown, setIsShown] = useState(false);
-  return (
-    <div
-      className={styles.root}
-      onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
-    >
-      <div className={styles.photo}>
-        {promo && <div className={styles.sale}>{promo}</div>}
-        <div className={isShown ? styles.buttons : styles.buttonsHidden}>
-          <Button variant='small'>Quick View</Button>
-          <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-          </Button>
-        </div>
+  return  (
+  <div className={styles.root}
+  onMouseEnter={() => setIsShown(true)}
+  onMouseLeave={() => setIsShown(false)}
+  >
+    <div className={styles.photo}>
+      <img
+        className={styles.image}
+        src={`${process.env.PUBLIC_URL}/images/products/${image}`}
+        alt={`Furniture-${category}`}
+      />
+      {promo && <div className={styles.sale}>{promo}</div>}
+      <div className={isShown ? styles.buttons : styles.buttonsHidden}>
+        <Button variant='small'>Quick View</Button>
+        <Button variant='small'>
+          <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+        </Button>
+      </div>
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
@@ -67,6 +72,8 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  category: PropTypes.string,
+  image: PropTypes.node,
 };
 
 export default ProductBox;
