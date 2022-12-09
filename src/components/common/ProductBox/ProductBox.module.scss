@@ -13,13 +13,14 @@
       position: center;
       repeat: no-repeat;
     }
+
     overflow: hidden;
     align-items: flex-end;
 
     .image {
       object-fit: cover;
-      width: 280px;
-      height: 220px;
+      width: 100%;
+      height: 280px;
     }
 
     .sale {
@@ -32,11 +33,15 @@
       color: $productBox-sale-color;
       padding: 30px 15px 5px 15px;
     }
-
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .buttonsHidden {
+    display: flex;
+    visibility: hidden;
+    justify-content: space-between;
   }
 
   .content {
@@ -79,5 +84,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .isShownPrice {
+    background-color: $primary;
+  }
+  .favoriteActive {
+    background-color: $primary;
   }
 }

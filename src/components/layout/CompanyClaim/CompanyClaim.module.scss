@@ -47,8 +47,10 @@
       }
 
       .cartCounter {
-        width: 28px;
+        min-width: 28px;
+        max-width: 52px;
         height: 27px;
+        padding: 5px;
         border-radius: 14px;
         background-color: $companyClaim-cartCounter-bg;
         display: flex;
