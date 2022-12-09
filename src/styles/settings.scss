@@ -1,4 +1,6 @@
+
 // COLORS PALETTE
+
 $white: #ffffff;
 $primary: #d58e32;
 $shadow-black:rgba(1, 2, 2, 0.2);
@@ -14,7 +16,6 @@ $color-grey-210: #363636;
 $color-grey-165: #2a2a2a;
 $color-grey-160: #292929;
 $text-color: $color-grey-165;
-
 
 
 //COLOR VARIABLES USED IN PROJECT
@@ -62,6 +63,11 @@ $productSearch-border-category-color: $color-grey-160;
 $productSearch-text-color: $color-grey-165;
 $productSearch-icon-color: $primary;
 $productSearch-placeholder-color: $color-grey-165;
+$productSearch-select-outline: $primary;
+$productSearch-select-bg: $white;
+$productSearch-select-bg-hover: $primary;
+$productSearch-select-color-hover: $white;
+
 
 //CompanyClaim
 $companyClaim-bg: $color-grey-210;
