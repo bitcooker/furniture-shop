@@ -47,7 +47,7 @@ const ProductBox = ({ name, price, priceOld, promo, stars }) => (
         </Button>
       </div>
       <div className={styles.price}>
-        {priceOld > 0 && (
+        {priceOld && (
           <s className='my-auto mx-2'>
             <span className='text-muted'>${priceOld}</span>
           </s>
