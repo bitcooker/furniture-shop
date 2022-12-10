@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { editProduct } from '../../../redux/productsRedux';
+import { addComparedProduct } from '../../../redux/comparedProductsRedux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +15,17 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 
-const ProductBox = ({ id, name, price, priceOld, promo, stars, image, category, isFavorite }) => {
+const ProductBox = ({
+  id,
+  name,
+  price,
+  priceOld,
+  promo,
+  stars,
+  image,
+  category,
+  isFavorite,
+}) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
 
@@ -25,6 +36,22 @@ const ProductBox = ({ id, name, price, priceOld, promo, stars, image, category, 
       isFavorite: !isFavorite,
     };
     dispatch(editProduct(payload));
+  };
+
+  const handleAddToCompare = e => {
+    e.preventDefault();
+    const payload = {
+      id: id,
+      name: name,
+      price: price,
+      priceOld: priceOld,
+      promo: promo,
+      stars: stars,
+      image: image,
+      category: category,
+      isFavorite: isFavorite,
+    };
+    dispatch(addComparedProduct(payload));
   };
 
   return (
@@ -71,7 +98,7 @@ const ProductBox = ({ id, name, price, priceOld, promo, stars, image, category, 
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button variant='outline' onClick={e => handleAddToCompare(e)}>
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
