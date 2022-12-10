@@ -85,6 +85,9 @@
     justify-content: space-between;
     align-items: center;
   }
+  
+  .price {
+    display: flex;
 
   .isShownPrice {
     background-color: $primary;

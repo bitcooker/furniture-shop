@@ -14,7 +14,7 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 
-const ProductBox = ({ id, name, price, promo, stars, image, category, isFavorite }) => {
+const ProductBox = ({ id, name, price, priceOld, promo, stars, image, category, isFavorite }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
 
@@ -75,7 +75,12 @@ const ProductBox = ({ id, name, price, promo, stars, image, category, isFavorite
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
-        <div>
+        <div className={styles.price}>
+          {priceOld && (
+            <s className='my-auto mx-2'>
+              <span className='text-muted'>${priceOld}</span>
+            </s>
+          )}
           <Button className={isShown ? styles.isShownPrice : undefined} variant='small'>
             $ {price}
           </Button>
@@ -89,6 +94,7 @@ ProductBox.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.number,
+  priceOld: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
   category: PropTypes.string,
