@@ -14,6 +14,7 @@ const initialState = {
       image: 'bed_1.jpg',
       price: 30,
       stars: 2,
+      userRating: 4,
       promo: 'sale',
       newFurniture: true,
       isFavorite: true,

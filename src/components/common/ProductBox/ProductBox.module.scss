@@ -54,13 +54,6 @@
       line-height: 24px;
       letter-spacing: 1px;
     }
-
-    .stars {
-      a {
-        text-decoration: none;
-        color: $productBox-stairs-color;
-      }
-    }
   }
 
   .line {
@@ -85,7 +78,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .price {
     display: flex;
   }
