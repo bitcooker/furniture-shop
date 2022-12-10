@@ -3,8 +3,19 @@ import PropTypes from 'prop-types';
 
 import styles from './Button.module.scss';
 
-const Button = ({ children, variant, noHover, className: propClassName, ...props }) => {
+const Button = ({
+  children,
+  favorite,
+  compare,
+  variant,
+  noHover,
+  className: propClassName,
+  ...props
+}) => {
   const classes = [];
+
+  if (favorite) classes.push(styles.active);
+  if (compare) classes.push(styles.active);
 
   if (propClassName) classes.push(propClassName);
 
@@ -28,6 +39,8 @@ const Button = ({ children, variant, noHover, className: propClassName, ...props
 Button.propTypes = {
   children: PropTypes.node,
   noHover: PropTypes.bool,
+  favorite: PropTypes.bool,
+  compare: PropTypes.bool,
   className: PropTypes.string,
   variant: PropTypes.string,
 };
