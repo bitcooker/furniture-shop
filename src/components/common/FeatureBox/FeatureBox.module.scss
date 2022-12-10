@@ -1,14 +1,14 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  border: 1px solid #b6b6b6;
+  border: 1px solid $featureBox-border-color;
   text-align: center;
   margin-top: 40px;
 
   .iconWrapper {
     height: 60px;
     transform: translateY(-50%);
-    color: $text-color;
+    color: $featureBox-icon-color;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
 
     &::before {
       content: "";
-      border: 1px solid #b6b6b6;
+      border: 1px solid $featureBox-border-color-before;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -28,7 +28,7 @@
       width: 76px;
       height: 76px;
       border-radius: 100%;
-      background-color: #ffffff;
+      background-color: $featureBox-bg-before;
       z-index: -1;
     }
 
@@ -41,13 +41,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: 1px solid #b6b6b6;
+      border: 1px solid $featureBox-border-color-after;
     }
   }
 
   .content {
     text-transform: uppercase;
-    color: rgb(42, 42, 42);
+    color: $featureBox-content-color;
     margin-top: -0.5rem;
     letter-spacing: 1px;
     font-weight: 300;
@@ -63,16 +63,16 @@
 
   &.active {
     .iconWrapper {
-      color: #ffffff;
+      color: $featureBox-active-icon-color;
 
       &::after {
-        background-color: $primary;
-        border-color: $primary;
+        background-color: $featureBox-active-bg-color;
+        border-color: $featureBox-active-border-color;
       }
     }
 
     .content {
-      color: $primary;
+      color: $featureBox-active-content-color;
     }
   }
 }
