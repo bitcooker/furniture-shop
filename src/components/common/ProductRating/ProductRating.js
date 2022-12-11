@@ -34,6 +34,20 @@ const ProductRating = ({ id, stars, userRating }) => {
     setRating(userRating);
   };
 
+  const ratingToShow = () => {
+    if (isEdited) {
+      return rating;
+    } else {
+      if (userRating) {
+        return userRating;
+      } else {
+        return stars;
+      }
+    }
+  };
+
+  const currentRating = ratingToShow();
+
   return (
     <div
       className={!isEdited && !userRating ? `${styles.stars}` : `${styles.userRating}`}
@@ -46,7 +60,7 @@ const ProductRating = ({ id, stars, userRating }) => {
           onMouseLeave={mouseLeaveHandler}
           onClick={rateClickHandler}
         >
-          {i <= (isEdited ? rating : userRating ? userRating : stars) ? (
+          {i <= currentRating ? (
             <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
           ) : (
             <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
