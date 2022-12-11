@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { editProduct, getAll } from '../../../redux/productsRedux';
+import { editProduct, getAll, getComparedProducts } from '../../../redux/productsRedux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,7 +30,7 @@ const ProductBox = ({
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
 
-  const products = useSelector(state => getAll(state));
+  const products = useSelector(state => getComparedProducts(state));
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
@@ -41,14 +41,10 @@ const ProductBox = ({
     dispatch(editProduct(payload));
   };
 
-  const getComparedProductsAmount = products =>
-    products.reduce((total, product) => (product.isCompared ? total + 1 : total), 0);
-
   const handleAddToCompare = e => {
     e.preventDefault();
 
-    const comparedProductNumberMoreThenFour =
-      getComparedProductsAmount(products) > 3 ? true : false;
+    const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
 
     if (!comparedProductNumberMoreThenFour) {
       const payload = {
