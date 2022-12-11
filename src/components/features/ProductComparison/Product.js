@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 
 import { editProduct } from '../../../redux/productsRedux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../common/Button/Button';
-
 import styles from './Product.module.scss';
 
 const Product = ({ id, image }) => {
@@ -32,23 +28,13 @@ const Product = ({ id, image }) => {
         />
         <div className={styles.removeIcon}>X</div>
       </div>
-      <Button variant='outline'>
-        <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-      </Button>
     </div>
   );
 };
 
 Product.propTypes = {
   id: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  priceOld: PropTypes.number,
-  promo: PropTypes.string,
-  stars: PropTypes.number,
-  category: PropTypes.string,
   image: PropTypes.node,
-  isFavorite: PropTypes.bool,
 };
 
 export default Product;
