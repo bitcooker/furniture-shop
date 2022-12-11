@@ -1,0 +1,17 @@
+.root {
+  .firstPromo,
+  .secondPromo,
+  .thirdPromo {
+    object-fit: cover;
+    object-position: bottom;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .firstPromo {
+    height: 500px;
+  }
+  .secondPromo,
+  .thirdPromo {
+    height: 250px;
+  }
+}

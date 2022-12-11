@@ -304,6 +304,20 @@ const initialState = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid pariatur eaque omnis rerum beatae, aliquam incidunt corrupti illum, soluta dicta, non eligendi minima corporis.',
     },
   ],
+  promo: [
+    {
+      id: 1,
+      photo: 'promo_1.jpg',
+    },
+    {
+      id: 2,
+      photo: 'promo_2.jpg',
+    },
+    {
+      id: 3,
+      photo: 'promo_3.jpg',
+    },
+  ],
 };
 
 export default initialState;
