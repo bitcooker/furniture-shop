@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import PropTypes from 'prop-types';
 
-import { editProduct } from '../../../redux/productsRedux';
-import { addComparedProduct } from '../../../redux/comparedProductsRedux';
+import { editProduct, getAll } from '../../../redux/productsRedux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,9 +25,12 @@ const ProductBox = ({
   image,
   category,
   isFavorite,
+  isCompared,
 }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
+
+  const products = useSelector(state => getAll(state));
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
@@ -38,20 +41,22 @@ const ProductBox = ({
     dispatch(editProduct(payload));
   };
 
+  const getComparedProductsAmount = products =>
+    products.reduce((total, product) => (product.isCompared ? total + 1 : total), 0);
+
   const handleAddToCompare = e => {
     e.preventDefault();
-    const payload = {
-      id: id,
-      name: name,
-      price: price,
-      priceOld: priceOld,
-      promo: promo,
-      stars: stars,
-      image: image,
-      category: category,
-      isFavorite: isFavorite,
-    };
-    dispatch(addComparedProduct(payload));
+
+    const comparedProductNumberMoreThenFour =
+      getComparedProductsAmount(products) > 3 ? true : false;
+
+    if (!comparedProductNumberMoreThenFour) {
+      const payload = {
+        id: id,
+        isCompared: !isCompared,
+      };
+      dispatch(editProduct(payload));
+    }
   };
 
   return (
@@ -98,7 +103,11 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline' onClick={e => handleAddToCompare(e)}>
+          <Button
+            variant='outline'
+            onClick={e => handleAddToCompare(e)}
+            className={isCompared ? `${styles.isCompared}` : null}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -127,6 +136,7 @@ ProductBox.propTypes = {
   category: PropTypes.string,
   image: PropTypes.node,
   isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
 };
 
 export default ProductBox;

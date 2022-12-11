@@ -1,0 +1,21 @@
+@import '../../../styles/settings.scss';
+
+.container {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $productBox-bg;
+    border: 1px solid $productBox-border-color;
+    padding: 10px;
+}
+
+.products {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

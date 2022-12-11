@@ -7,6 +7,7 @@
 
   .photo {
     position: relative;
+
     background: {
       color: $productBox-photo-bg;
       size: contain;
@@ -34,10 +35,12 @@
       padding: 30px 15px 5px 15px;
     }
   }
+
   .buttons {
     display: flex;
     justify-content: space-between;
   }
+
   .buttonsHidden {
     display: flex;
     visibility: hidden;
@@ -85,14 +88,20 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .price {
     display: flex;
   }
+
   .isShownPrice {
     background-color: $primary;
   }
+
   .favoriteActive {
+    background-color: $primary;
+  }
+
+  .isCompared {
     background-color: $primary;
   }
 }
