@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductBox from './ProductBox';
+import ClientFeedback from './ClientFeedback';
 
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -14,7 +14,7 @@ describe('Component ProductBox', () => {
     store = mockStore(initialState);
     const component = shallow(
       <Provider store={store}>
-        <ProductBox />
+        <ClientFeedback />
       </Provider>
     );
     expect(component).toBeTruthy();

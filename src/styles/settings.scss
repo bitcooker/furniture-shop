@@ -1,13 +1,114 @@
-$base-padding: 24px;
 
+// COLORS PALETTE
+
+$white: #ffffff;
+$primary: #d58e32;
+$shadow-black:rgba(1, 2, 2, 0.2);
+$color-grey-960: #f4f5f7;
+$color-grey-900: rgb(224, 227, 237);
+$color-grey-880: #e1e1e1;
+$color-grey-890: #e2e2e2;
+$color-grey-850: rgb(216, 216, 216);
+$color-grey-710: #b6b6b6;
+$color-grey-660: rgb(169, 169, 169);
+$color-grey-260: #434343;
+$color-grey-210: #363636;
+$color-grey-165: #2a2a2a;
+$color-grey-160: #292929;
+$text-color: $color-grey-165;
+
+
+//COLOR VARIABLES USED IN PROJECT
+
+//Button
+$button-bg: $color-grey-165;
+$button-color-text: $white;
+$button-bg-hover: $primary;
+
+//FeatureBox
+$featureBox-border-color: $color-grey-710;
+$featureBox-border-color-before: $color-grey-710;
+$featureBox-bg-before: $white;
+$featureBox-border-color-after: $color-grey-710;
+$featureBox-icon-color: $text-color;
+$featureBox-content-color:$color-grey-165 ;
+$featureBox-active-bg-color: $primary;
+$featureBox-active-border-color: $primary;
+$featureBox-active-icon-color: $white;
+$featureBox-active-content-color: $primary;
+
+//ProductBox
+$productBox-title: $primary;
+$productBox-bg: $white;
+$productBox-border-color: $color-grey-880;
+$productBox-photo-bg: $color-grey-960;
+$productBox-sale-bg: $color-grey-160;
+$productBox-sale-color: $white;
+$productBox-stairs-color: $color-grey-165;
+$productBox-line-border-color: $color-grey-165;
+$productBox-line-border-color-before: $primary;
+
+//NewFurniture
+$newFurniture-bottom-line-color: $color-grey-890;
+$newFurniture-text-left-color: $primary;
+$newFurniture-text-center-color: $color-grey-165;
+$newFurniture-active-line-color: $primary;
+$newFurniture-active-dots-bg: $primary;
+$newFurniture-dots-bg: $color-grey-880;
+$newFurniture-dots-ul-bg: $white;
+
+//ProductSearch
+$productSearch-border-color: $color-grey-160;
+$productSearch-border-category-color: $color-grey-160;
+$productSearch-text-color: $color-grey-165;
+$productSearch-icon-color: $primary;
+$productSearch-placeholder-color: $color-grey-165;
+$productSearch-select-outline: $primary;
+$productSearch-select-bg: $white;
+$productSearch-select-bg-hover: $primary;
+$productSearch-select-color-hover: $white;
+
+
+//CompanyClaim
+$companyClaim-bg: $color-grey-210;
+$companyClaim-number-color: $color-grey-850;
+$companyClaim-phone-color: $primary;
+$companyClaim-cartIcon-color: $primary;
+$companyClaim-cartBox-color: $white;
+$companyClaim-cartCounter-bg: $color-grey-210;
+$companyClaim-cartCounter-color: $color-grey-900;
+$companyClaim-cartIcon-hover-bg: $primary;
+
+//Footer
+$footer-wrapper-bg: $color-grey-210;
+$footer-wrapper-title-color: $white;
+$footer-category-text: $white;
+$footer-menu-text-color: $color-grey-660;
+$footer-menu-text-hover: $white;
+$footer-bar-bg: $color-grey-165;
+$footer-bar-text-color: $color-grey-660;
+$footer-bar-icon-color: $color-grey-660;
+$footer-bar-icon-active: $primary;
+
+//MenuBar
+$menuBar-bg: $white;
+$menuBar-shadow-color: $shadow-black;
+$menuBar-text-color: $color-grey-165;
+$menuBar-border-color: $white;
+$menuBar-text-color-hover: $primary;
+$menuBar-bg-hover: $primary;
+$menuBar-text-color-hover: $white;
+$menuBar-border-color-hover: $primary;
+$menuBar-border-color-active: $color-grey-210;
+
+//TopBar
+$topBar-bg: $color-grey-260;
+$topBar-text-color: $white;
+$topBar-text-color-active: $primary;
+
+//Header
 $header-topbar-bg: #434343;
 $header-bg: #363636;
 
-$footer-claim-bg: #2a2a2a;
-$footer-bg: #363636;
-
-$primary: #d58e32;
-
-$text-color: #2a2a2a;
-
-$form-border-color: #292929;
+//OTHER SETTINGS
+$base-padding: 24px;
