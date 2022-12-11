@@ -1,0 +1,75 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import styles from './ClientFeedback.module.scss';
+import { getFeedback } from '../../../redux/feedbackRedux';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
+
+const ClientFeedback = () => {
+  const feedback = useSelector(state => getFeedback(state));
+  const [activeFeedback, setActiveFeedback] = useState(0);
+
+  const handleFeedbackChange = newFeedback => {
+    setActiveFeedback(newFeedback);
+  };
+
+  const feedbackCount = feedback.length;
+
+  const dots = [];
+  for (let i = 0; i < feedbackCount; i++) {
+    dots.push(
+      <li>
+        <a
+          onClick={() => handleFeedbackChange(i)}
+          className={i === activeFeedback && styles.active}
+        >
+          feedback {i}
+        </a>
+      </li>
+    );
+  }
+
+  return (
+    <div className={styles.root}>
+      <div className='container mb-5'>
+        <div className={styles.panelBar}>
+          <div className='row no-gutters align-items-end'>
+            <div className={'col ' + styles.heading}>
+              <h3>Client feedback</h3>
+            </div>
+            <div className={'col-auto ' + styles.dots}>
+              <ul>{dots}</ul>
+            </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className={'col ' + styles.feedback}>
+            <p>
+              <FontAwesomeIcon icon={faQuoteRight}>x</FontAwesomeIcon>
+            </p>
+            <p className='px-5'>{feedback[activeFeedback].content}</p>
+            <div className={`row m-auto text-center ${styles.client}`}>
+              <div className='col p-0'>
+                <img
+                  className={styles.image}
+                  src={`${process.env.PUBLIC_URL}/images/feedback/${feedback[activeFeedback].photo}`}
+                  alt='client avatar'
+                />
+              </div>
+              <div className='col p-0 text-center align-middle'>
+                <p className='m-0'>{feedback[activeFeedback].name}</p>
+                <p className='m-0 small text-muted'>
+                  {feedback[activeFeedback].description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ClientFeedback;
