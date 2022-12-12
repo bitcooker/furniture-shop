@@ -13,48 +13,17 @@ const Brands = () => {
           <span className='text-muted'>{'<'}</span>
         </div>
         <div className='row d-flex w-100 m-3 text-center'>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[0].photo}`}
-              alt='brand logo'
-            />
-          </div>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[1].photo}`}
-              alt='brand logo'
-            />
-          </div>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[2].photo}`}
-              alt='brand logo'
-            />
-          </div>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[3].photo}`}
-              alt='brand logo'
-            />
-          </div>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[4].photo}`}
-              alt='brand logo'
-            />
-          </div>
-          <div className='col m-2 border'>
-            <img
-              className={styles.image}
-              src={`${process.env.PUBLIC_URL}/images/brands/${brands[5].photo}`}
-              alt='brand logo'
-            />
-          </div>
+          {[1, 2, 3, 4, 5, 6].map(item => (
+            <div key={item} className='col m-2 border'>
+              <img
+                className={styles.image}
+                src={`${process.env.PUBLIC_URL}/images/brands/${
+                  brands[`${item}`].photo
+                }`}
+                alt='brand logo'
+              />
+            </div>
+          ))}
         </div>
         <div className={`border m-3 ${styles.arrow}`}>
           <span className='text-muted'>{'>'}</span>
