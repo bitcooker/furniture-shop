@@ -318,6 +318,48 @@ const initialState = {
       photo: 'promo_3.jpg',
     },
   ],
+  brands: [
+    {
+      id: 1,
+      photo: '1.png',
+    },
+    {
+      id: 2,
+      photo: '2.png',
+    },
+    {
+      id: 3,
+      photo: '3.png',
+    },
+    {
+      id: 4,
+      photo: '4.png',
+    },
+    {
+      id: 5,
+      photo: '5.png',
+    },
+    {
+      id: 6,
+      photo: '3.png',
+    },
+    {
+      id: 7,
+      photo: '5.png',
+    },
+    {
+      id: 8,
+      photo: '3.png',
+    },
+    {
+      id: 9,
+      photo: '2.png',
+    },
+    {
+      id: 10,
+      photo: '1.png',
+    },
+  ],
 };
 
 export default initialState;
