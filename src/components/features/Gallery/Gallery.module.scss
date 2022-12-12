@@ -1,0 +1,99 @@
+@import "../../../styles/settings.scss";
+
+.root {
+
+      .panelBar {
+        margin-bottom: 30px;
+        position: relative;
+
+
+        border-bottom: 4px solid $newFurniture-bottom-line-color;
+
+      .heading {
+        position: relative;
+
+        h3 {
+          color: $newFurniture-text-left-color;
+          text-transform: uppercase;
+          font-size: 20px;
+          line-height: 38px;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 45px;
+          border-bottom: 4px solid $newFurniture-active-line-color;
+        }
+      }
+    }
+
+    .photo {
+        position: relative;
+
+        .image {
+            width: 100%;
+            height: 603px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .photoInfo {
+            position: absolute;
+            top: 71px;
+            left: 62px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap:25px;
+
+            .price {
+                display: flex;
+                align-items: flex-end;
+                gap: 5px;
+
+            }
+
+            .price h5:first-child {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 18px;
+
+            }
+
+            .price h1:last-child {
+              color: #79ae30;
+              margin-bottom: 5px;
+              font-weight: 600;
+
+          }
+
+            .mainText {
+                color: $primary;
+                font-size: 48px;
+                color: #d58e32;
+                font-weight: 600;
+                font-family: "Poppins";
+            }
+
+            .btnRightPhoto {
+                border: none;
+                width: 136px;
+                height: 54px;
+                border-radius: 3px;
+                background-color: #79ae30;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #ffffff;
+                font-weight: 600;
+                font-family: "Poppins";
+
+
+            }
+        }
+    }
+  }

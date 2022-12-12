@@ -1,0 +1,60 @@
+@import "../../../styles/settings.scss";
+
+.root {
+    position: relative;
+
+    .image {
+        width: 100%;
+        height: 445px;
+        position: relative;
+    }
+
+    .topBtn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 47px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #2a2a2a;
+        font-weight: 600;
+        font-family: "Poppins";
+        font-size: 18px;
+
+        a {
+            text-decoration: none;
+            color: #2a2a2a;
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            
+
+
+        }
+    }
+
+    .leftBtn {
+        position: absolute;
+        top:175px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap:7px;
+        z-index: 2;
+
+    }
+
+    .active {
+        color: $primary;
+        background-color: transparent;
+    }
+
+}
