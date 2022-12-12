@@ -14,6 +14,7 @@ const initialState = {
       image: 'bed_1.jpg',
       price: 30,
       stars: 2,
+      userRating: 4,
       promo: 'sale',
       newFurniture: true,
       isFavorite: true,
@@ -301,6 +302,46 @@ const initialState = {
   cart: {
     products: [],
   },
+  feedback: [
+    {
+      id: 0,
+      name: 'John Smith',
+      description: 'Furniture client',
+      photo: '0_john.jpg',
+      content:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero officia iure suscipit nam atque maiores doloremque vitae rem eos nisi, odio, sint dicta tempore earum ab sapiente magnam fugit ut.',
+    },
+    {
+      id: 1,
+      name: 'Mary Doe',
+      description: 'Interior designer',
+      photo: '1_mary.jpg',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, doloremque reprehenderit ipsa quibusdam ea quod laboriosam odit incidunt.',
+    },
+    {
+      id: 2,
+      name: 'Derek Tig',
+      description: 'Furniture client',
+      photo: '2_derek.jpg',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid pariatur eaque omnis rerum beatae, aliquam incidunt corrupti illum, soluta dicta, non eligendi minima corporis.',
+    },
+  ],
+  promo: [
+    {
+      id: 1,
+      photo: 'promo_1.jpg',
+    },
+    {
+      id: 2,
+      photo: 'promo_2.jpg',
+    },
+    {
+      id: 3,
+      photo: 'promo_3.jpg',
+    },
+  ],
 };
 
 export default initialState;

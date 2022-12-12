@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
+import Swipeable from '../../common/Swipeable/Swipeable';
 
 class NewFurniture extends React.Component {
   state = {
@@ -30,6 +31,7 @@ class NewFurniture extends React.Component {
       dots.push(
         <li>
           <a
+            onChange={() => this.handlePageChange(i)}
             onClick={() => this.handlePageChange(i)}
             className={i === activePage && styles.active}
           >
@@ -66,13 +68,26 @@ class NewFurniture extends React.Component {
               </div>
             </div>
           </div>
-          <div className='row'>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-              <div key={item.id} className='col-3'>
-                <ProductBox {...item} />
-              </div>
-            ))}
-          </div>
+          <Swipeable
+            leftAction={
+              activePage < pagesCount - 1
+                ? () => this.handlePageChange(activePage + 1)
+                : undefined
+            }
+            rightAction={
+              activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
+            }
+          >
+            <div className='row'>
+              {categoryProducts
+                .slice(activePage * 8, (activePage + 1) * 8)
+                .map(item => (
+                  <div key={item.id} className='col-3'>
+                    <ProductBox {...item} />
+                  </div>
+                ))}
+            </div>
+          </Swipeable>
         </div>
       </div>
     );
