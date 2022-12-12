@@ -11,9 +11,7 @@ import styles from './MenuBar.module.scss';
 const MenuBar = ({ children }) => (
   <div className={styles.root}>
     <div className={styles.container}>
-      {/* <div className='row align-items-center'> */}
       <div>
-        {/* <div className='col'> */}
         <ProductSearch />
       </div>
       <div className={styles.icon}>
