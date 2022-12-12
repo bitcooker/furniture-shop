@@ -1,10 +1,12 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles//mediaQueriesMixins.scss";
 
 .root {
   border: 1px solid $productSearch-border-color;
   display: inline-flex;
   height: 45px;
   color: $text-color;
+  margin: 5px;
 
   .category {
     border-right: 1px solid $productSearch-border-color;
@@ -71,7 +73,7 @@
           position: relative;
           padding: 5px;
 
-          &:hover{
+          &:hover {
             background-color: $text-color;
             color: white;
           }
@@ -79,8 +81,6 @@
       }
     }
   }
-
-
 
   .searchField {
     display: flex;
@@ -104,4 +104,6 @@
       outline: none;
     }
   }
+
+  @include product-search-media-queries;
 }

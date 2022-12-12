@@ -1,0 +1,109 @@
+// MenuBar
+@mixin menu-bar-menu-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    background-color: white;
+    box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
+}
+
+@mixin menu-bar-media-queries {
+
+    @media (max-width: 599px) {
+
+        .container {
+            position: relative;
+            grid-template-columns: 4fr 1fr;
+        }
+
+        .icon {
+            display: grid;
+            place-content: center;
+        }
+
+        .icon:hover+.menu {
+            @include menu-bar-menu-small;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0px;
+            width: 100%;
+
+            ul {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .menu:hover {
+            @include menu-bar-menu-small;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 1200px) {
+
+        .container {
+            grid-template-columns: 1fr;
+            place-items: center;
+            align-items: center;
+        }
+    }
+
+}
+
+
+// ProductSearch
+@mixin product-search-media-queries {
+
+    @media (max-width: 599px) {
+        .searchField {
+            padding-left: 4px;
+            font-size: 10px;
+            width: 150px;
+
+            .icon {
+                width: 30px;
+                aspect-ratio: 1/1;
+                display: grid;
+                place-content: center;
+                font-size: 20px;
+            }
+        }
+
+        .product-search-input {
+            width: max(100%, 145px);
+        }
+
+        .category {
+            width: 100px;
+            font-size: 14px;
+
+            .icon {
+                display: none;
+            }
+
+            .dropDown {
+                ul {
+                    width: 100px;
+                }
+            }
+
+            &:hover .dropDown ul {
+                position: absolute;
+                left: 5px;
+            }
+
+            &:hover .selectLabel {
+                position: relative;
+                left: -15px;
+                width: 100%;
+            }
+
+        }
+    }
+}
