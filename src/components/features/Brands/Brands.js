@@ -13,13 +13,11 @@ const Brands = () => {
           <span className='text-muted'>{'<'}</span>
         </div>
         <div className='row d-flex w-100 m-3 text-center'>
-          {[1, 2, 3, 4, 5, 6].map(item => (
+          {brands.map(item => (
             <div key={item} className='col m-2 border'>
               <img
                 className={styles.image}
-                src={`${process.env.PUBLIC_URL}/images/brands/${
-                  brands[`${item}`].photo
-                }`}
+                src={`${process.env.PUBLIC_URL}/images/brands/${item.photo}`}
                 alt='brand logo'
               />
             </div>

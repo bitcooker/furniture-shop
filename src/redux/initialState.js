@@ -343,22 +343,6 @@ const initialState = {
       id: 6,
       photo: '3.png',
     },
-    {
-      id: 7,
-      photo: '5.png',
-    },
-    {
-      id: 8,
-      photo: '3.png',
-    },
-    {
-      id: 9,
-      photo: '2.png',
-    },
-    {
-      id: 10,
-      photo: '1.png',
-    },
   ],
 };
 
