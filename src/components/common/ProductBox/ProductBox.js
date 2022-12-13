@@ -24,9 +24,6 @@ const ProductBox = ({
   isFavorite,
   isCompared,
   userRating,
-  image,
-  category,
-  isFavorite,
 }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
@@ -112,6 +109,7 @@ const ProductBox = ({
     </div>
   );
 };
+
 ProductBox.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string,
@@ -125,6 +123,8 @@ ProductBox.propTypes = {
   image: PropTypes.node,
   isFavorite: PropTypes.bool,
   isCompared: PropTypes.bool,
+  favorite: PropTypes.bool,
+  compare: PropTypes.bool,
 };
 
 export default ProductBox;
