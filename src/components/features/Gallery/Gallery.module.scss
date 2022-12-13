@@ -5,13 +5,13 @@
       .panelBar {
         margin-bottom: 30px;
         position: relative;
-        border-bottom: 4px solid $newFurniture-bottom-line-color;
+        border-bottom: 4px solid $gallery-border-color;
 
       .heading {
         position: relative;
 
         h3 {
-          color: $newFurniture-text-left-color;
+          color: $gallery-title-color;
           text-transform: uppercase;
           font-size: 20px;
           line-height: 38px;
@@ -25,7 +25,7 @@
           bottom: -4px;
           left: 0;
           width: 45px;
-          border-bottom: 4px solid $newFurniture-active-line-color;
+          border-bottom: 4px solid $gallery-border-color-active;
         }
       }
     }
@@ -64,7 +64,7 @@
             }
 
             .price h1:last-child {
-              color: #79ae30;
+              color: $gallery-secondary-text-color;
               margin-bottom: 5px;
               font-weight: 600;
 
@@ -73,7 +73,7 @@
             .mainText {
                 color: $primary;
                 font-size: 48px;
-                color: #d58e32;
+                color: $gallery-main-text-color;
                 font-weight: 600;
                 font-family: "Poppins";
             }
@@ -83,13 +83,12 @@
                 width: 136px;
                 height: 54px;
                 border-radius: 3px;
-                background-color: #79ae30;
+                background-color: $gallery-btn-right-bg;
                 font-size: 14px;
                 text-transform: uppercase;
-                color: #ffffff;
+                color:$gallery-btn-right-color;
                 font-weight: 600;
                 font-family: "Poppins";
-
 
             }
         }

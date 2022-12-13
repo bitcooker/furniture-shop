@@ -110,5 +110,28 @@ $topBar-text-color-active: $primary;
 $header-topbar-bg: #434343;
 $header-bg: #363636;
 
+//GallerySlider
+$gallerySlider-topBtn-color:$color-grey-165;
+$gallerySlider-topBtn-bg: $white;
+$gallerySlider-topBtn-border: $color-grey-890;
+$gallerySlider-tooltiptext-bg: $color-grey-165;
+$gallerySlider-tooltiptext-color: $white;
+$gallerySlider-promo-color: $white;
+$gallerySlider-promo-bg: $color-grey-165;
+$gallerySlider-badge-bg: $white;
+$gallerySlider-badge-corner: $color-grey-165;
+$gallerySlider-slider-border: $color-grey-890;
+$gallerySlider-slider-arrow-bg: $color-grey-165;
+$gallerySlider-slider-arrow-color: $white;
+
+//Gallery
+$gallery-border-color: $color-grey-890;
+$gallery-border-color-active: $primary;
+$gallery-title-color:$primary;
+$gallery-secondary-text-color:#79ae30;
+$gallery-main-text-color:#d58e32;
+$gallery-btn-right-color:$white;
+$gallery-btn-right-bg:#79ae30;
+
 //OTHER SETTINGS
 $base-padding: 24px;

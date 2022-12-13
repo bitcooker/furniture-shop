@@ -40,7 +40,7 @@ const GallerySlider = () => {
         <Button variant='outline'>
           <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
         </Button>
-        <span className={styles.tooltiptext}>Quick view</span>
+        <span className={styles.tooltiptext}> Quick view</span>
         <Button variant='outline'>
           <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon>
         </Button>
