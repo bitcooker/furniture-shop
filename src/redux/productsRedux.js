@@ -1,10 +1,12 @@
 /* selectors */
 export const getAll = ({ products }) => products;
 export const getCount = ({ products }) => products.length;
-
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
-
+export const getDiscountedProducts = ({ products }) =>
+  products.filter(item => item.priceOld);
+export const getPromoProducts = ({ products }) =>
+  products.filter(item => item.promo === 'sale');
 /* action name creator */
 const reducerName = 'cart';
 const createActionName = name => `app/${reducerName}/${name}`;

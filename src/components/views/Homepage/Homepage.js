@@ -6,9 +6,11 @@ import styles from './Homepage.module.scss';
 import FeatureBoxes from '../../features/FeatureBoxes/FeatureBoxes';
 import NewFurniture from '../../features/NewFurniture/NewFurnitureContainer';
 import ClientFeedback from '../../features/ClientFeedback/ClientFeedback';
+import PromoSection from '../../features/PromoSection/PromoSection';
 
 const Homepage = () => (
   <div className={styles.root}>
+    <PromoSection />
     <FeatureBoxes />
     <NewFurniture />
     <ClientFeedback />

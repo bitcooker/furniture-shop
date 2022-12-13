@@ -8,7 +8,6 @@
   .photo {
     position: relative;
     background: {
-      color: $productBox-photo-bg;
       size: contain;
       position: center;
       repeat: no-repeat;
@@ -33,12 +32,48 @@
       color: $productBox-sale-color;
       padding: 30px 15px 5px 15px;
     }
+    .hotDealsButton {
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+    }
+    .hotDealsHidden {
+      position: absolute;
+      display: flex;
+      visibility: hidden;
+      justify-content: space-between;
+    }
+    .clock {
+      display: flex;
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .circle {
+      background: $color-grey-260;
+      background: rgba(0, 0, 0, 0.5);
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 0 6px;
+
+      font-size: 18px;
+      color: $white;
+    }
   }
-  .buttons {
+  .newFurnitureButtons {
     display: flex;
     justify-content: space-between;
   }
-  .buttonsHidden {
+  .newFurnitureButtonsHidden {
     display: flex;
     visibility: hidden;
     justify-content: space-between;

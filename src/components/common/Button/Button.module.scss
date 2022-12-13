@@ -39,3 +39,19 @@
     color: $button-color-text;
   }
 }
+.white {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid $white;
+  color: $button-bg;
+  background-color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  &:not(.noHover):hover {
+    color: $button-color-text !important;
+    background-color: black;
+    border: 1px solid black;
+    text-decoration: none;
+  }
+}
