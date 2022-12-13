@@ -10,10 +10,12 @@ import Footer from '../Footer/Footer';
 const MainLayout = ({ children }) => {
   const dispatch = useDispatch();
 
-  const changeRWDMode = width => {
-    if (width < 600) {
+  const changeRWDMode = () => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 600) {
       dispatch(changeMode(RWD_MODES.MOBILE));
-    } else if (width < 1200) {
+    } else if (windowWidth < 1200) {
       dispatch(changeMode(RWD_MODES.TABLET));
     } else {
       dispatch(changeMode(RWD_MODES.DESKTOP));
@@ -21,11 +23,12 @@ const MainLayout = ({ children }) => {
   };
 
   useEffect(() => {
-    changeRWDMode(window.innerWidth);
+    changeRWDMode();
 
-    window.addEventListener(`resize`, () => changeRWDMode(window.innerWidth));
-    //eslint-disable-next-line
-  }, []);
+    window.addEventListener(`resize`, changeRWDMode);
+
+    return () => window.removeEventListener(`resize`, changeMode);
+  }, [changeRWDMode]);
 
   return (
     <div>
