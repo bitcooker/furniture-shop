@@ -1,4 +1,5 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/mediaQueriesMixins.scss";
 
 .root {
   .footerMenu {
@@ -55,6 +56,10 @@
         font-size: 14px;
         line-height: 26px;
       }
+
+      @include for-tablet {
+        text-align: left !important;
+     }
     }
 
     .socialMedia {
@@ -77,6 +82,22 @@
           }
         }
       }
+    }
+  }
+  .emptySpace {
+    @include for-tablet {
+      order: -1;
+      flex: 1 0 100%;
+    }
+    @include for-phone {
+      order: -1;
+      flex: 1 0 100%;
+    }
+  }
+
+  .footerWrapper {
+    @include for-phone {
+      text-align: center !important;
     }
   }
 }

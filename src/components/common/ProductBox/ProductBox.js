@@ -24,9 +24,6 @@ const ProductBox = ({
   isFavorite,
   isCompared,
   userRating,
-  image,
-  category,
-  isFavorite,
 }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
