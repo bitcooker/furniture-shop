@@ -1,3 +1,9 @@
+export const RWD_MODES = {
+  DESKTOP: `desktop`,
+  TABLET: `tablet`,
+  MOBILE: `mobile`,
+};
+
 const initialState = {
   categories: [
     { id: 'bed', name: 'Bed' },
@@ -318,6 +324,7 @@ const initialState = {
       photo: 'promo_3.jpg',
     },
   ],
+  rwdMode: RWD_MODES.DESKTOP,
 };
 
 export default initialState;
