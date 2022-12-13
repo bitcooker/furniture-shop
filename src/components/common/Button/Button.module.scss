@@ -35,7 +35,7 @@
   line-height: 22px;
 
   &:not(.noHover):hover {
-    background: $button-bg;
+    background-color: $button-bg;
     color: $button-color-text;
   }
 }
