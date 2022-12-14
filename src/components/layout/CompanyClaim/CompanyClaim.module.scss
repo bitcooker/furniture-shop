@@ -65,6 +65,7 @@
       }
 
       &:hover {
+        @include bg-hover-animation;
         .cartIcon {
           background-color: lighten($companyClaim-cartIcon-hover-bg, 10%);
         }
