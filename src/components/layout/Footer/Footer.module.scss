@@ -59,14 +59,28 @@
 
       @include for-tablet {
         text-align: left !important;
+        margin-bottom: 15px;
      }
+
+      @include for-phone {
+         margin-bottom: 15px;
+      }
     }
 
     .socialMedia {
+
+      @include for-tablet {
+        margin-bottom: 15px;
+     }
+
+      @include for-phone {
+         margin-bottom: 15px;
+      }
       ul {
         margin: 0;
         padding: 0;
         list-style: none;
+        flex-wrap: nowrap;
 
         li {
           display: inline-block;
@@ -86,7 +100,7 @@
   }
   .emptySpace {
     color: transparent;
-    background-color: transparent;
+    background-color: $footer-bar-bg;
 
     @include for-tablet {
       order: -1;
