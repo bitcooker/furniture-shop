@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import PropTypes from 'prop-types';
 
-import { editProduct } from '../../../redux/productsRedux';
+import { editProduct, getAll, getComparedProducts } from '../../../redux/productsRedux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,13 +19,16 @@ const ProductBox = ({
   priceOld,
   promo,
   stars,
-  userRating,
   image,
   category,
   isFavorite,
+  isCompared,
+  userRating,
 }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
+
+  const products = useSelector(state => getComparedProducts(state));
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
@@ -33,6 +37,20 @@ const ProductBox = ({
       isFavorite: !isFavorite,
     };
     dispatch(editProduct(payload));
+  };
+
+  const handleAddToCompare = e => {
+    e.preventDefault();
+
+    const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
+
+    if (!comparedProductNumberMoreThenFour) {
+      const payload = {
+        id: id,
+        isCompared: !isCompared,
+      };
+      dispatch(editProduct(payload));
+    }
   };
 
   return (
@@ -69,7 +87,11 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            onClick={e => handleAddToCompare(e)}
+            className={isCompared ? `${styles.isCompared}` : null}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -87,6 +109,7 @@ const ProductBox = ({
     </div>
   );
 };
+
 ProductBox.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string,
@@ -99,6 +122,9 @@ ProductBox.propTypes = {
   category: PropTypes.string,
   image: PropTypes.node,
   isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
+  favorite: PropTypes.bool,
+  compare: PropTypes.bool,
 };
 
 export default ProductBox;
