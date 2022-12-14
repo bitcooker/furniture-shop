@@ -115,8 +115,6 @@ $base-padding: 24px;
 
 //Animations
 
-
-
 @mixin text-hover-animation {
     transition-property: color;
     transition-duration: 250ms;
@@ -128,5 +126,5 @@ $base-padding: 24px;
     transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: linear;
-    transition-delay: 150ms;
+    transition-delay: 100ms;
 }
