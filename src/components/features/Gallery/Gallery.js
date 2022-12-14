@@ -1,6 +1,7 @@
 import React from 'react';
 import GallerySlider from '../../common/GallerySlider/GallerySlider';
 import styles from './Gallery.module.scss';
+import ImageBanner from './ImageBanner/ImageBanner';
 
 const Gallery = () => {
   return (
@@ -22,21 +23,7 @@ const Gallery = () => {
             </div>
           </div>
           <div className='col-sm-6 d-none d-sm-block'>
-            <div className={styles.photo}>
-              <img
-                className={styles.image}
-                src={`${process.env.PUBLIC_URL}/images/products/bed_11.jpg`}
-                alt='bed'
-              />
-              <div className={styles.photoInfo}>
-                <div className={styles.price}>
-                  <h5>From</h5>
-                  <h1>$50.80</h1>
-                </div>
-                <h1 className={styles.mainText}>Bedroom Bed</h1>
-                <button className={styles.btnRightPhoto}>Shop now</button>
-              </div>
-            </div>
+            <ImageBanner />
           </div>
         </div>
       </div>

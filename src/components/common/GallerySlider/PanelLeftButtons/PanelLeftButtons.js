@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../Button/Button';
-import styles from './PanelLeftButton.module.scss';
+import styles from './PanelLeftButtons.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShoppingBasket,
@@ -10,7 +10,7 @@ import {
 import { faStar as faHeart } from '@fortawesome/free-regular-svg-icons';
 import clsx from 'clsx';
 
-const PanelLeftButton = () => {
+const PanelLeftButtons = () => {
   return (
     <div className={clsx(styles.buttons, styles.tooltip)}>
       <Button variant='outline'>
@@ -33,4 +33,4 @@ const PanelLeftButton = () => {
   );
 };
 
-export default PanelLeftButton;
+export default PanelLeftButtons;

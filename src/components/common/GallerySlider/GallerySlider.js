@@ -2,33 +2,22 @@ import React from 'react';
 import styles from './GallerySlider.module.scss';
 import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
-import PanelLeftButton from './PanelLeftButton/PanelLeftButton';
+import PanelLeftButtons from './PanelLeftButtons/PanelLeftButtons';
 import Slider from './Slider/Slider';
 import Badge from './Badge/Badge';
+import PanelTopButtons from './PanelTopButtons/PanelTopButtons';
+import Promo from './Promo/Promo';
+import ImageSlider from './ImageSlider/ImageSlider';
 
 const GallerySlider = () => {
   const topSeller = useSelector(getAll);
 
   return (
     <div className={styles.root}>
-      <div className={styles.topBtn}>
-        <a href='#'>Featured</a>
-        <a href='#' className={styles.active}>
-          Top seller
-        </a>
-        <a href='#'>Sale off</a>
-        <a href='#'>Top rated</a>
-      </div>
-      <PanelLeftButton />
-      <img
-        className={styles.image}
-        src={`${process.env.PUBLIC_URL}/images/products/${topSeller[2].image}`}
-        alt='chair'
-      />
-      <div className={styles.promo}>
-        <h4>${`${topSeller[2].price}`}</h4>
-        {topSeller[2].priceOld ? <h6>${`${topSeller[2].priceOld}`}</h6> : ' '}
-      </div>
+      <PanelTopButtons />
+      <PanelLeftButtons />
+      <ImageSlider topSeller={topSeller} />
+      <Promo topSeller={topSeller} />
       <Badge topSeller={topSeller} />
       <Slider topSeller={topSeller} />
     </div>
