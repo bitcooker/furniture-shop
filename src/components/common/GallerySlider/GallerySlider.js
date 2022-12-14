@@ -27,7 +27,7 @@ const GallerySlider = () => {
       />
       <div className={styles.promo}>
         <h4>${`${topSeller[2].price}`}</h4>
-        <h6>${`${topSeller[2].priceOld}`}</h6>
+        {topSeller[2].priceOld ? <h6>${`${topSeller[2].priceOld}`}</h6> : ' '}
       </div>
       <Badge topSeller={topSeller} />
       <Slider topSeller={topSeller} />
