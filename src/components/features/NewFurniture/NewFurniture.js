@@ -50,6 +50,20 @@ class NewFurniture extends React.Component {
     );
   }
 
+  getDots(categoryProducts, rwdMode) {
+    let dotsNumber = 0;
+
+    if (rwdMode === RWD_MODES.DESKTOP) {
+      dotsNumber = Math.ceil(categoryProducts.length / 8);
+    } else if (rwdMode === RWD_MODES.TABLET) {
+      dotsNumber = Math.ceil(categoryProducts.length / 4);
+    } else {
+      dotsNumber = Math.ceil(categoryProducts.length / 1);
+    }
+
+    return dotsNumber;
+  }
+
   render() {
     const { categories, products, rwdMode } = this.props;
     const { activeCategory, activePage } = this.state;
@@ -58,7 +72,7 @@ class NewFurniture extends React.Component {
     const pagesCount = Math.ceil(categoryProducts.length / 8);
 
     const dots = [];
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
       dots.push(
         <li>
           <a
