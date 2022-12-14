@@ -18,7 +18,7 @@ const FeatureBoxes = () => (
       <div className='row'>
         <NavLink
           className={`
-             col , ${styles.link}`}
+             col-6 col-lg-3 py-2 , ${styles.link}`}
           to='/#'
         >
           <FeatureBox icon={faTruck}>
@@ -29,7 +29,7 @@ const FeatureBoxes = () => (
 
         <NavLink
           className={`
-             col , ${styles.link}`}
+             col-6 col-lg-3 py-2 , ${styles.link}`}
           to='/#'
         >
           <FeatureBox icon={faHeadphones}>
@@ -40,7 +40,7 @@ const FeatureBoxes = () => (
 
         <NavLink
           className={`
-             col , ${styles.link}`}
+             col-6 col-lg-3 py-2 , ${styles.link}`}
           to='/#'
         >
           <FeatureBox icon={faReplyAll}>
@@ -51,7 +51,7 @@ const FeatureBoxes = () => (
 
         <NavLink
           className={`
-             col , ${styles.link}`}
+             col-6 col-lg-3 py-2 , ${styles.link}`}
           to='/#'
         >
           <FeatureBox icon={faBullhorn}>

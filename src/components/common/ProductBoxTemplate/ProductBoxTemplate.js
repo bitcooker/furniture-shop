@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import PropTypes from 'prop-types';
-import { editProduct } from '../../../redux/productsRedux';
+import { editProduct, getComparedProducts } from '../../../redux/productsRedux';
 import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
@@ -11,9 +12,11 @@ import ProductRating from '../ProductRating/ProductRating';
 import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
 
-const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
+const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
+
+  const products = useSelector(state => getComparedProducts(state));
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
@@ -22,6 +25,20 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
       isFavorite: !props.isFavorite,
     };
     dispatch(editProduct(payload));
+  };
+
+  const handleAddToCompare = e => {
+    e.preventDefault();
+
+    const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
+
+    if (!comparedProductNumberMoreThenFour) {
+      const payload = {
+        id: props.id,
+        isCompared: !isCompared,
+      };
+      dispatch(editProduct(payload));
+    }
   };
 
   return (
@@ -71,7 +88,11 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            onClick={e => handleAddToCompare(e)}
+            className={isCompared ? `${styles.isCompared}` : null}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -103,6 +124,9 @@ ProductBoxTemplate.propTypes = {
   isFavorite: PropTypes.bool,
   newFurniture: PropTypes.bool,
   hotDeals: PropTypes.bool,
+  isCompared: PropTypes.bool,
+  favorite: PropTypes.bool,
+  compare: PropTypes.bool,
 };
 
 export default ProductBoxTemplate;
