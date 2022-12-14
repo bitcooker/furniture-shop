@@ -46,28 +46,6 @@
       visibility: hidden;
       justify-content: space-between;
     }
-    .clock {
-      display: flex;
-      position: absolute;
-      bottom: -120px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .circle {
-      background: $color-grey-260;
-      background: rgba(0, 0, 0, 0.5);
-      width: 66px;
-      height: 66px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      margin: 0 6px;
-
-      font-size: 18px;
-      color: $white;
-    }
   }
   .newFurnitureButtons {
     display: flex;

@@ -6,10 +6,12 @@ import { editProduct } from '../../../redux/productsRedux';
 
 import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
+import HotDealsHover from '../HotDeals/HotDealsHover/HotDealsHover';
+import NewFurnitureHover from '../../features/NewFurniture/NewFurnitureHover/NewFurnitureHover';
 
 const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
   const [isShown, setIsShown] = useState(false);
@@ -44,43 +46,12 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
               isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
             }
           >
-            <Button variant='small'>Quick View</Button>
-            <Button variant='small'>
-              <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-            </Button>
+            <NewFurnitureHover />
           </div>
         )}
         {hotDeals && (
           <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
-            <Button variant='small'>
-              <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-            </Button>
-            <div className={styles.clock}>
-              <div className={styles.circle}>
-                <b>
-                  25
-                  <br /> DAYS
-                </b>
-              </div>
-              <div className={styles.circle}>
-                <b>
-                  10
-                  <br /> HRS
-                </b>
-              </div>
-              <div className={styles.circle}>
-                <b>
-                  45
-                  <br /> MINS
-                </b>
-              </div>
-              <div className={styles.circle}>
-                <b>
-                  30
-                  <br /> SEC
-                </b>
-              </div>
-            </div>
+            <HotDealsHover />
           </div>
         )}
       </div>
