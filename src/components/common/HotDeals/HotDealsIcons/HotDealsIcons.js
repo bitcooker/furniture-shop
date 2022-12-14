@@ -2,8 +2,9 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../Button/Button';
 import React from 'react';
-import styles from './HotDealsHover.module.scss';
-const HotDealsHover = () => {
+import styles from './HotDealsIcons.module.scss';
+
+const HotDealsIcons = () => {
   return (
     <>
       <Button variant='small'>
@@ -38,4 +39,4 @@ const HotDealsHover = () => {
     </>
   );
 };
-export default HotDealsHover;
+export default HotDealsIcons;

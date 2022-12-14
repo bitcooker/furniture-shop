@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './HotDeals.module.scss';
 import { useSelector } from 'react-redux';
 import { getDiscountedProducts } from '../../../redux/productsRedux';
-
 import ProductBoxTemplate from '../ProductBoxTemplate/ProductBoxTemplate';
+
 const HotDeals = () => {
   const discountedProducts = useSelector(getDiscountedProducts);
   const [activeProduct, setActiveProduct] = useState(0);

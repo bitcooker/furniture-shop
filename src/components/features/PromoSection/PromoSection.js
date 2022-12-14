@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './PromoSection.module.scss';
 import HotDeals from '../../common/HotDeals/HotDeals';
 import SaleSlider from '../../common/SaleSlider/SaleSlider';
+
 const PromoSection = () => {
   return (
     <div className='container'>

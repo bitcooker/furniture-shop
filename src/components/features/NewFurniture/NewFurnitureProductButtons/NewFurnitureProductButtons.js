@@ -2,7 +2,8 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Button from '../../../common/Button/Button';
-const NewFurnitureHover = () => {
+
+const NewFurnitureProductButtons = () => {
   return (
     <>
       <Button variant='small'>Quick View</Button>
@@ -12,4 +13,4 @@ const NewFurnitureHover = () => {
     </>
   );
 };
-export default NewFurnitureHover;
+export default NewFurnitureProductButtons;

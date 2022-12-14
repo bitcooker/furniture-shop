@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import { editProduct } from '../../../redux/productsRedux';
-
 import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
-import HotDealsHover from '../HotDeals/HotDealsHover/HotDealsHover';
-import NewFurnitureHover from '../../features/NewFurniture/NewFurnitureHover/NewFurnitureHover';
+import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
+import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
 
 const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
   const [isShown, setIsShown] = useState(false);
@@ -46,12 +44,12 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, ...props }) => {
               isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
             }
           >
-            <NewFurnitureHover />
+            <NewFurnitureProductButtons />
           </div>
         )}
         {hotDeals && (
           <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
-            <HotDealsHover />
+            <HotDealsIcons />
           </div>
         )}
       </div>

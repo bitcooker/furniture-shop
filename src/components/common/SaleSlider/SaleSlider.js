@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getPromoProducts } from '../../../redux/productsRedux';
@@ -6,6 +6,7 @@ import styles from './SaleSlider.module.scss';
 import Button from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 const SaleSlider = () => {
   const promoProducts = useSelector(getPromoProducts);
 
