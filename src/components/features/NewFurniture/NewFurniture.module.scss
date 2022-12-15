@@ -51,6 +51,7 @@
 
             &.active,
             &:hover {
+              @include bg-hover-animation;
               &::before {
                 content: "";
                 position: absolute;
@@ -91,6 +92,7 @@
 
             &.active,
             &:hover {
+              @include bg-hover-animation;
               background-color: $newFurniture-active-dots-bg;
             }
           }

@@ -57,6 +57,7 @@
 
             &.active,
             &:hover {
+              @include bg-hover-animation;
               background-color: $newFurniture-active-dots-bg;
             }
           }

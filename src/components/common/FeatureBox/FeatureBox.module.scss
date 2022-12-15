@@ -60,16 +60,20 @@
 
   &:hover,
   &.active {
+
     .iconWrapper {
+      @include text-hover-animation;
       color: $featureBox-active-icon-color;
 
       &::after {
+        @include bg-hover-animation;
         background-color: $featureBox-active-bg-color;
         border-color: $featureBox-active-border-color;
       }
     }
 
     .content {
+      @include text-hover-animation;
       color: $featureBox-active-content-color;
     }
   }

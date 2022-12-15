@@ -17,6 +17,7 @@
         font-size: 13px;
 
         &:hover {
+          @include text-hover-animation;
           color: $topBar-text-color-active;
           text-decoration: none;
         }

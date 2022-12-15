@@ -112,3 +112,23 @@ $header-bg: #363636;
 
 //OTHER SETTINGS
 $base-padding: 24px;
+
+
+//Animations
+$transition-time: 250ms;
+$transition-delay-text: 250ms;
+$transition-delay-bg: 150ms;
+
+@mixin text-hover-animation {
+    transition-property: color;
+    transition-duration: $transition-time;
+    transition-timing-function: linear;
+    transition-delay: $transition-delay-text;
+}
+
+@mixin bg-hover-animation {
+    transition-property: background-color;
+    transition-duration: $transition-time;
+    transition-timing-function: linear;
+    transition-delay: $transition-delay-bg;
+}
