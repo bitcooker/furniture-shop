@@ -9,22 +9,34 @@ class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    newFurnitureAnimation: false,
   };
 
   handlePageChange(newPage) {
     this.setState({ activePage: newPage });
   }
 
-  handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+  handleCategoryChange(newCategory, productsRef) {
+    const animationTime = 350; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        newFurnitureAnimation: false,
+      });
+    }, animationTime);
   }
 
   render() {
     const { categories, products } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { activeCategory, activePage, newFurnitureAnimation } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    this.productsRef = React.createRef();
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -55,7 +67,9 @@ class NewFurniture extends React.Component {
                     <li key={item.id}>
                       <a
                         className={item.id === activeCategory && styles.active}
-                        onClick={() => this.handleCategoryChange(item.id)}
+                        onClick={() =>
+                          this.handleCategoryChange(item.id, this.productsRef)
+                        }
                       >
                         {item.name}
                       </a>
@@ -78,7 +92,12 @@ class NewFurniture extends React.Component {
               activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
             }
           >
-            <div className='row'>
+            <div
+              className={`row ${styles.products} ${
+                newFurnitureAnimation ? styles.fadeOut : styles.fadeIn
+              }`}
+              ref={this.productsRef}
+            >
               {categoryProducts
                 .slice(activePage * 8, (activePage + 1) * 8)
                 .map(item => (
