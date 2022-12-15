@@ -25,6 +25,10 @@
     }
   }
 
+  .iconLabel{
+    margin: 0 5px;
+  }
+
   .topOptions ul li {
     margin-right: 1.5rem;
 
@@ -45,6 +49,7 @@
 @include for-tablet {
   .iconLabel {
     display: none;
+    margin: 0;
   }
 }
 
@@ -54,11 +59,18 @@
       display: none;
     }
 
-    .topMenu{
-      ul{
+    .topMenu {
+
+      ul {
         padding: 0;
         margin: 0;
         width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        li:last-of-type{
+          padding-right: 10px;
+        }
       }
     }
 
