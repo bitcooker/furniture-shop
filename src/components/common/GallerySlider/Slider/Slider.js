@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Slider.module.scss';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const Slider = ({ topSeller }) => {
   return (
