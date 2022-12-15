@@ -13,7 +13,16 @@ class NewFurniture extends React.Component {
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    const animationTime = 250; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        newFurnitureAnimation: false,
+        activePage: newPage,
+      });
+    }, animationTime);
   }
 
   handleCategoryChange(newCategory, productsRef) {
