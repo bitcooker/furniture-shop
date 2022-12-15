@@ -7,11 +7,13 @@ import FeatureBoxes from '../../features/FeatureBoxes/FeatureBoxes';
 import NewFurniture from '../../features/NewFurniture/NewFurnitureContainer';
 import ProductComparison from '../../features/ProductComparison/ProductComparison';
 import ClientFeedback from '../../features/ClientFeedback/ClientFeedback';
+import PromoSection from '../../features/PromoSection/PromoSection';
 import Promotions from '../../layout/Promotions/Promotions';
 import Brands from '../../features/Brands/Brands';
 
 const Homepage = () => (
   <div className={styles.root}>
+    <PromoSection />
     <FeatureBoxes />
     <Promotions />
     <NewFurniture />
