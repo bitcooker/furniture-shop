@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getPromoProducts } from '../../../redux/productsRedux';
 import styles from './SaleSlider.module.scss';
 import Button from '../Button/Button';
+import Swipeable from '../Swipeable/Swipeable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -43,20 +44,22 @@ const SaleSlider = () => {
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
-        <img
-          className={`${styles.image} ${animation ? styles.fadeOut : styles.fadeIn}`}
-          src={`${process.env.PUBLIC_URL}/images/products/${promoProducts[activeSlide].image}`}
-          alt={`Furniture-${promoProducts[activeSlide].image}`}
-        />
-        <div className={styles.info}>
-          <h1 className={styles.text}>
-            INDOOR <strong>FURNITURE</strong>
-          </h1>
-          <h5 className={styles.text}>SAVE UP TO 50% OF ALL FURNITURE</h5>
-          <Button variant='white' className={styles.shopNow}>
-            SHOP NOW
-          </Button>
-        </div>
+        <Swipeable leftAction={nextSlide} rightAction={prevSlide}>
+          <img
+            className={`${styles.image} ${animation ? styles.fadeOut : styles.fadeIn}`}
+            src={`${process.env.PUBLIC_URL}/images/products/${promoProducts[activeSlide].image}`}
+            alt={`Furniture-${promoProducts[activeSlide].image}`}
+          />
+          <div className={styles.info}>
+            <h1 className={styles.text}>
+              INDOOR <strong>FURNITURE</strong>
+            </h1>
+            <h5 className={styles.text}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+            <Button variant='white' className={styles.shopNow}>
+              SHOP NOW
+            </Button>
+          </div>
+        </Swipeable>
       </div>
       <div className='row'>
         <Button onClick={() => prevSlide()} variant='main' className='col text-center'>
