@@ -22,12 +22,15 @@ class NewFurniture extends React.Component {
   }
 
   getDisplayedProductsCount(rwdMode) {
-    if (rwdMode === RWD_MODES.DESKTOP) {
-      return 8;
-    } else if (rwdMode === RWD_MODES.TABLET) {
-      return 4;
-    } else {
-      return 1;
+    switch (rwdMode) {
+      case RWD_MODES.DESKTOP:
+        return 8;
+      case RWD_MODES.TABLET:
+        return 4;
+      case RWD_MODES.MOBILE:
+        return 1;
+      default:
+        return 1;
     }
   }
 
