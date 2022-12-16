@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getPromoProducts } from '../../../redux/productsRedux';
@@ -9,14 +9,44 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const SaleSlider = () => {
   const promoProducts = useSelector(getPromoProducts);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const promoProductsCount = promoProducts.length;
+  const [animation, setAnimation] = useState(false);
+
+  const handleSlideChange = newSlide => {
+    setTimeout(() => {
+      setActiveSlide(newSlide);
+      setAnimation(false);
+    }, 350);
+  };
+
+  const prevSlide = () => {
+    if (activeSlide > 0) {
+      handleSlideChange(activeSlide - 1);
+    }
+    if (activeSlide === 0) {
+      handleSlideChange(promoProductsCount - 1);
+    }
+    setAnimation(true);
+  };
+
+  const nextSlide = () => {
+    if (activeSlide < promoProductsCount - 1) {
+      handleSlideChange(activeSlide + 1);
+    }
+    if (activeSlide === promoProductsCount - 1) {
+      handleSlideChange(0);
+    }
+    setAnimation(true);
+  };
 
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
         <img
-          className={styles.image}
-          src={`${process.env.PUBLIC_URL}/images/products/${promoProducts[0].image}`}
-          alt={`Furniture-${promoProducts[0].image}`}
+          className={`${styles.image} ${animation ? styles.fadeOut : styles.fadeIn}`}
+          src={`${process.env.PUBLIC_URL}/images/products/${promoProducts[activeSlide].image}`}
+          alt={`Furniture-${promoProducts[activeSlide].image}`}
         />
         <div className={styles.info}>
           <h1 className={styles.text}>
@@ -29,16 +59,17 @@ const SaleSlider = () => {
         </div>
       </div>
       <div className='row'>
-        <Button variant='main' className='col text-center'>
+        <Button onClick={() => prevSlide()} variant='main' className='col text-center'>
           <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
         </Button>
-        <Button variant='main' className='col text-center'>
+        <Button onClick={() => nextSlide()} variant='main' className='col text-center'>
           <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
         </Button>
       </div>
     </div>
   );
 };
+
 SaleSlider.propTypes = {
   children: PropTypes.node,
 };

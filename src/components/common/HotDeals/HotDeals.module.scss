@@ -41,3 +41,11 @@
     }
   }
 }
+
+.fadeIn {
+  @include fadeIn;
+}
+
+.fadeOut {
+  @include fadeOut;
+}
