@@ -5,9 +5,7 @@ import { RWD_MODES } from '../../../redux/initialState';
 
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
-import ProductBox from '../../common/ProductBox/ProductBox';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
-
 
 class NewFurniture extends React.Component {
   state = {
@@ -45,7 +43,7 @@ class NewFurniture extends React.Component {
           )
           .map(item => (
             <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
-              <ProductBox {...item} />
+              <ProductBoxTemplate {...item} newFurniture={true} />
             </div>
           ))}
       </>
