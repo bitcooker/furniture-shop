@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { RWD_MODES } from '../../../redux/initialState';
 
 import styles from './NewFurniture.module.scss';
-import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import ProductBox from '../../common/ProductBox/ProductBox';
 
 class NewFurniture extends React.Component {
   state = {
