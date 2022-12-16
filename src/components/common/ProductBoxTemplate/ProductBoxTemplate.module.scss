@@ -7,8 +7,8 @@
 
   .photo {
     position: relative;
+
     background: {
-      color: $productBox-photo-bg;
       size: contain;
       position: center;
       repeat: no-repeat;
@@ -33,12 +33,26 @@
       color: $productBox-sale-color;
       padding: 30px 15px 5px 15px;
     }
+    .hotDealsButton {
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+    }
+    .hotDealsHidden {
+      position: absolute;
+      display: flex;
+      visibility: hidden;
+      justify-content: space-between;
+    }
   }
-  .buttons {
+  .newFurnitureButtons {
     display: flex;
     justify-content: space-between;
   }
-  .buttonsHidden {
+  .newFurnitureButtonsHidden {
     display: flex;
     visibility: hidden;
     justify-content: space-between;
@@ -82,10 +96,16 @@
   .price {
     display: flex;
   }
+
   .isShownPrice {
     background-color: $primary;
   }
+
   .favoriteActive {
+    background-color: $primary;
+  }
+
+  .isCompared {
     background-color: $primary;
   }
 }

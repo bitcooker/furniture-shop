@@ -23,6 +23,7 @@
             color: $footer-menu-text-color;
 
             &:hover {
+              @include text-hover-animation;
               color:$footer-menu-text-hover;
             }
           }
@@ -72,6 +73,7 @@
             text-decoration: none;
 
             &:hover {
+              @include text-hover-animation;
               color: $footer-bar-icon-active;
             }
           }

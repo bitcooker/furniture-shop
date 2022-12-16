@@ -1,11 +1,27 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/mediaQueriesMixins.scss";
+
+@mixin menu-bar-menu-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  background-color: white;
+  box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
+}
 
 .root {
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: $menuBar-bg;
+  padding: 5px;
 
-  :global(.container) > :global(.row) {
-    height: 84px;
+  .container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    align-items: center;
   }
 
   .menu {
@@ -38,6 +54,7 @@
 
       &:hover,
       &.active {
+        @include bg-hover-animation;
         background-color: $menuBar-bg-hover;
         color: $menuBar-text-color-hover;
         border-color: $menuBar-border-color-hover;
@@ -47,5 +64,62 @@
         border-color: $menuBar-border-color-active;
       }
     }
+
+  }
+
+  .icon {
+    display: none;
+    height: 100%;
+    aspect-ratio: 1/1;
+    font-size: 25px;
+
+    &:hover {
+      @include bg-hover-animation;
+      color: $menuBar-bg;
+      background-color: $menuBar-hamburger-menu-icon-hover-bg;
+      cursor: pointer;
+    }
+  }
+
+  @include for-phone {
+    .container {
+      position: relative;
+      grid-template-columns: 4fr 1fr;
+    }
+
+    .icon {
+      display: grid;
+      place-content: center;
+    }
+
+    .icon:hover+.menu {
+      @include menu-bar-menu-small;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      width: 100%;
+
+      ul {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .menu:hover {
+      @include menu-bar-menu-small;
+    }
+  }
+
+  @include for-tablet {
+            .container {
+             grid-template-columns: 1fr;
+             place-items: center;
+             align-items: center;
+           }
   }
 }

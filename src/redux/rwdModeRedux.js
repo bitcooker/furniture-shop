@@ -6,7 +6,7 @@ const reducerName = 'rwdMode';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const CHANGE_MODE = createActionName('EDIT_PRODUCT');
+const CHANGE_MODE = createActionName('CHANGE_MODE');
 
 /* action creators */
 export const changeMode = payload => ({ payload, type: CHANGE_MODE });
