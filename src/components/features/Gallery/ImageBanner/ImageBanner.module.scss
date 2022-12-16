@@ -1,7 +1,16 @@
 @import "../../../../styles/settings.scss";
+@import "../../../../styles/mediaQueriesMixins.scss";
 
 .photo {
     position: relative;
+
+    @include for-tablet {
+        display: none;
+    }
+
+    @include for-phone {
+        display: none;
+    }
 
     .image {
         width: 100%;

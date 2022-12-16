@@ -3,7 +3,7 @@ import styles from './GallerySlider.module.scss';
 import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
 import PanelLeftButtons from './PanelLeftButtons/PanelLeftButtons';
-import Slider from './Slider/Slider';
+import BottomSlider from './BottomSlider/BottomSlider';
 import Badge from './Badge/Badge';
 import PanelTopButtons from './PanelTopButtons/PanelTopButtons';
 import Promo from './Promo/Promo';
@@ -19,7 +19,7 @@ const GallerySlider = () => {
       <ImageSlider topSeller={topSeller} />
       <Promo topSeller={topSeller} />
       <Badge topSeller={topSeller} />
-      <Slider topSeller={topSeller} />
+      <BottomSlider topSeller={topSeller} />
     </div>
   );
 };
