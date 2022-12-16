@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { RWD_MODES } from '../../../redux/initialState';
+
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import ProductBox from '../../common/ProductBox/ProductBox';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
+
 
 class NewFurniture extends React.Component {
   state = {
@@ -19,15 +23,58 @@ class NewFurniture extends React.Component {
     this.setState({ activeCategory: newCategory });
   }
 
+  getDisplayedProductsCount(rwdMode) {
+    if (rwdMode === RWD_MODES.DESKTOP) {
+      return 8;
+    } else if (rwdMode === RWD_MODES.TABLET) {
+      return 4;
+    } else {
+      return 1;
+    }
+  }
+
+  getProducts(categoryProducts, activePage, rwdMode) {
+    const displayedProductsCount = this.getDisplayedProductsCount(rwdMode);
+
+    return (
+      <>
+        {categoryProducts
+          .slice(
+            activePage * displayedProductsCount,
+            (activePage + 1) * displayedProductsCount
+          )
+          .map(item => (
+            <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
+              <ProductBox {...item} />
+            </div>
+          ))}
+      </>
+    );
+  }
+
+  getDots(categoryProducts, rwdMode) {
+    let dotsNumber = 0;
+
+    if (rwdMode === RWD_MODES.DESKTOP) {
+      dotsNumber = Math.ceil(categoryProducts.length / 8);
+    } else if (rwdMode === RWD_MODES.TABLET) {
+      dotsNumber = Math.ceil(categoryProducts.length / 4);
+    } else {
+      dotsNumber = Math.ceil(categoryProducts.length / 1);
+    }
+
+    return dotsNumber;
+  }
+
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, rwdMode } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
 
     const dots = [];
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
       dots.push(
         <li>
           <a
@@ -79,13 +126,7 @@ class NewFurniture extends React.Component {
             }
           >
             <div className='row'>
-              {categoryProducts
-                .slice(activePage * 8, (activePage + 1) * 8)
-                .map(item => (
-                  <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
-                    <ProductBoxTemplate {...item} newFurniture={true} />
-                  </div>
-                ))}
+              {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>
         </div>
@@ -114,11 +155,13 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  rwdMode: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
   categories: [],
   products: [],
+  rwdMode: RWD_MODES.DESKTOP,
 };
 
 export default NewFurniture;
