@@ -44,6 +44,7 @@
 
   .bottomBar {
     background-color: $footer-bar-bg;
+    color: $footer-bar-text-color;
 
     :global(.container) > :global(.row) {
       height: 95px;
@@ -96,21 +97,6 @@
           }
         }
       }
-    }
-  }
-  .emptySpace {
-    color: transparent;
-    background-color: $footer-bar-bg;
-
-    @include for-tablet {
-      order: -1;
-      flex: 1 0 100%;
-      text-align: center;
-    }
-    @include for-phone {
-      order: -1;
-      flex: 1 0 100%;
-      text-align: center;
     }
   }
 
