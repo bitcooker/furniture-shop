@@ -1,9 +1,19 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/mediaQueriesMixins.scss";
 
 .root {
   .panelBar {
     margin-bottom: 30px;
     position: relative;
+
+
+    @include for-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include for-phone {
+      margin-bottom: 80px;
+    }
 
     :global(.row)>* {
       border-bottom: 4px solid $newFurniture-bottom-line-color;
@@ -53,6 +63,8 @@
 
             &.active,
             &:hover {
+              @include bg-hover-animation;
+
               &::before {
                 content: "";
                 position: absolute;
@@ -71,6 +83,15 @@
       position: absolute;
       right: 0;
       top: 0;
+
+      @include for-tablet {
+        position: relative;
+        margin: 0 auto;
+      }
+
+      @include for-phone {
+        top: 60px;
+      }
 
       ul {
         margin: 0;
@@ -93,6 +114,7 @@
 
             &.active,
             &:hover {
+              @include bg-hover-animation;
               background-color: $newFurniture-active-dots-bg;
             }
           }

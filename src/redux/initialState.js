@@ -1,3 +1,9 @@
+export const RWD_MODES = {
+  DESKTOP: `desktop`,
+  TABLET: `tablet`,
+  MOBILE: `mobile`,
+};
+
 const initialState = {
   categories: [
     { id: 'bed', name: 'Bed' },
@@ -136,6 +142,7 @@ const initialState = {
       category: 'bed',
       image: 'bed_11.jpg',
       price: 30,
+      priceOld: 50,
       stars: 2,
       promo: 'sale',
       newFurniture: true,
@@ -498,6 +505,7 @@ const initialState = {
       photo: 'promo_3.jpg',
     },
   ],
+  rwdMode: RWD_MODES.DESKTOP,
   brands: [
     {
       id: 1,

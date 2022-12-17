@@ -1,0 +1,23 @@
+@import "../../../../styles/settings.scss";
+
+.sliderList {
+    height: 89px;
+    position: relative;
+    padding: 9px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 9px;
+    border:  1px solid $gallerySlider-slider-border;
+    cursor: pointer;
+
+    .sliderArrow {
+        height: 71px;
+        background-color: $gallerySlider-slider-arrow-bg;
+        color:$gallerySlider-slider-arrow-color;
+        width: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

@@ -2,29 +2,17 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
-
-import { editProduct, getAll, getComparedProducts } from '../../../redux/productsRedux';
-
-import styles from './ProductBox.module.scss';
+import { editProduct, getComparedProducts } from '../../../redux/productsRedux';
+import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
+import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
+import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
 
-const ProductBox = ({
-  id,
-  name,
-  price,
-  priceOld,
-  promo,
-  stars,
-  image,
-  category,
-  isFavorite,
-  isCompared,
-  userRating,
-}) => {
+const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
 
@@ -33,8 +21,8 @@ const ProductBox = ({
   const favoriteChangeHandler = e => {
     e.preventDefault();
     const payload = {
-      id: id,
-      isFavorite: !isFavorite,
+      id: props.id,
+      isFavorite: !props.isFavorite,
     };
     dispatch(editProduct(payload));
   };
@@ -46,7 +34,7 @@ const ProductBox = ({
 
     if (!comparedProductNumberMoreThenFour) {
       const payload = {
-        id: id,
+        id: props.id,
         isCompared: !isCompared,
       };
       dispatch(editProduct(payload));
@@ -62,20 +50,33 @@ const ProductBox = ({
       <div className={styles.photo}>
         <img
           className={styles.image}
-          src={`${process.env.PUBLIC_URL}/images/products/${image}`}
-          alt={`Furniture-${category}`}
+          src={`${process.env.PUBLIC_URL}/images/products/${props.image}`}
+          alt={`Furniture-${props.category}`}
         />
-        {promo && <div className={styles.sale}>{promo}</div>}
-        <div className={isShown ? styles.buttons : styles.buttonsHidden}>
-          <Button variant='small'>Quick View</Button>
-          <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-          </Button>
-        </div>
+
+        {props.promo && <div className={styles.sale}>{props.promo}</div>}
+        {newFurniture && (
+          <div
+            className={
+              isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
+            }
+          >
+            <NewFurnitureProductButtons />
+          </div>
+        )}
+        {hotDeals && (
+          <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
+            <HotDealsIcons />
+          </div>
+        )}
       </div>
       <div className={styles.content}>
-        <h5>{name}</h5>
-        <ProductRating id={id} stars={stars} userRating={userRating} />
+        <h5>{props.name}</h5>
+        <ProductRating
+          id={props.id}
+          stars={props.stars}
+          userRating={props.userRating}
+        />
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
@@ -83,7 +84,7 @@ const ProductBox = ({
           <Button
             variant='outline'
             onClick={favoriteChangeHandler}
-            className={isFavorite ? `${styles.favoriteActive}` : null}
+            className={props.isFavorite ? `${styles.favoriteActive}` : null}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
@@ -96,21 +97,20 @@ const ProductBox = ({
           </Button>
         </div>
         <div className={styles.price}>
-          {priceOld && (
+          {props.priceOld && (
             <s className='my-auto mx-2'>
-              <span className='text-muted'>${priceOld}</span>
+              <span className='text-muted'>${props.priceOld}</span>
             </s>
           )}
           <Button className={isShown ? styles.isShownPrice : undefined} variant='small'>
-            $ {price}
+            $ {props.price}
           </Button>
         </div>
       </div>
     </div>
   );
 };
-
-ProductBox.propTypes = {
+ProductBoxTemplate.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string,
   name: PropTypes.string,
@@ -122,9 +122,11 @@ ProductBox.propTypes = {
   category: PropTypes.string,
   image: PropTypes.node,
   isFavorite: PropTypes.bool,
+  newFurniture: PropTypes.bool,
+  hotDeals: PropTypes.bool,
   isCompared: PropTypes.bool,
   favorite: PropTypes.bool,
   compare: PropTypes.bool,
 };
 
-export default ProductBox;
+export default ProductBoxTemplate;

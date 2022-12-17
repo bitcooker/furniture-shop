@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { RWD_MODES } from '../../../redux/initialState';
+
 import styles from './NewFurniture.module.scss';
-import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
 
 class NewFurniture extends React.Component {
   state = {
@@ -39,9 +41,56 @@ class NewFurniture extends React.Component {
     }, animationTime);
   }
 
+  getDisplayedProductsCount(rwdMode) {
+    switch (rwdMode) {
+      case RWD_MODES.DESKTOP:
+        return 8;
+      case RWD_MODES.TABLET:
+        return 4;
+      case RWD_MODES.MOBILE:
+        return 1;
+      default:
+        return 1;
+    }
+  }
+
+  getProducts(categoryProducts, activePage, rwdMode) {
+    const displayedProductsCount = this.getDisplayedProductsCount(rwdMode);
+
+    return (
+      <>
+        {categoryProducts
+          .slice(
+            activePage * displayedProductsCount,
+            (activePage + 1) * displayedProductsCount
+          )
+          .map(item => (
+            <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
+              <ProductBoxTemplate {...item} newFurniture={true} />
+            </div>
+          ))}
+      </>
+    );
+  }
+
+  getDots(categoryProducts, rwdMode) {
+    let dotsNumber = 0;
+
+    if (rwdMode === RWD_MODES.DESKTOP) {
+      dotsNumber = Math.ceil(categoryProducts.length / 8);
+    } else if (rwdMode === RWD_MODES.TABLET) {
+      dotsNumber = Math.ceil(categoryProducts.length / 4);
+    } else {
+      dotsNumber = Math.ceil(categoryProducts.length / 1);
+    }
+
+    return dotsNumber;
+  }
+
   render() {
-    const { categories, products } = this.props;
+
     const { activeCategory, activePage, newFurnitureAnimation } = this.state;
+    const { categories, products, rwdMode } = this.props;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
@@ -49,7 +98,7 @@ class NewFurniture extends React.Component {
     this.productsRef = React.createRef();
 
     const dots = [];
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
       dots.push(
         <li>
           <a
@@ -102,19 +151,8 @@ class NewFurniture extends React.Component {
               activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
             }
           >
-            <div
-              className={`row ${styles.products} ${
-                newFurnitureAnimation ? styles.fadeOut : styles.fadeIn
-              }`}
-              ref={this.productsRef}
-            >
-              {categoryProducts
-                .slice(activePage * 8, (activePage + 1) * 8)
-                .map(item => (
-                  <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
-                    <ProductBox {...item} />
-                  </div>
-                ))}
+            <div className='row'>
+              {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>
         </div>
@@ -143,11 +181,13 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  rwdMode: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
   categories: [],
   products: [],
+  rwdMode: RWD_MODES.DESKTOP,
 };
 
 export default NewFurniture;
