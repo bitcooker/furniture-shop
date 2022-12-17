@@ -5,9 +5,7 @@ import { RWD_MODES } from '../../../redux/initialState';
 
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
-import ProductBox from '../../common/ProductBox/ProductBox';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
-
 
 class NewFurniture extends React.Component {
   state = {
@@ -24,12 +22,15 @@ class NewFurniture extends React.Component {
   }
 
   getDisplayedProductsCount(rwdMode) {
-    if (rwdMode === RWD_MODES.DESKTOP) {
-      return 8;
-    } else if (rwdMode === RWD_MODES.TABLET) {
-      return 4;
-    } else {
-      return 1;
+    switch (rwdMode) {
+      case RWD_MODES.DESKTOP:
+        return 8;
+      case RWD_MODES.TABLET:
+        return 4;
+      case RWD_MODES.MOBILE:
+        return 1;
+      default:
+        return 1;
     }
   }
 
@@ -45,7 +46,7 @@ class NewFurniture extends React.Component {
           )
           .map(item => (
             <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
-              <ProductBox {...item} />
+              <ProductBoxTemplate {...item} newFurniture={true} />
             </div>
           ))}
       </>

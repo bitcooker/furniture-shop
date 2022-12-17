@@ -9,6 +9,7 @@ import ProductComparison from '../../features/ProductComparison/ProductCompariso
 import ClientFeedback from '../../features/ClientFeedback/ClientFeedback';
 import PromoSection from '../../features/PromoSection/PromoSection';
 import Promotions from '../../layout/Promotions/Promotions';
+import Gallery from '../../features/Gallery/Gallery';
 import Brands from '../../features/Brands/Brands';
 
 const Homepage = () => (
@@ -17,6 +18,7 @@ const Homepage = () => (
     <FeatureBoxes />
     <Promotions />
     <NewFurniture />
+    <Gallery />
     <Brands />
     <ProductComparison />
     <ClientFeedback />

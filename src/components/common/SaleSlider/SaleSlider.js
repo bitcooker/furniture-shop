@@ -23,15 +23,21 @@ const SaleSlider = () => {
   const prevSlide = () => {
     if (activeSlide > 0) {
       handleSlideChange(activeSlide - 1);
-      setAnimation(true);
     }
+    if (activeSlide === 0) {
+      handleSlideChange(promoProductsCount - 1);
+    }
+    setAnimation(true);
   };
 
   const nextSlide = () => {
     if (activeSlide < promoProductsCount - 1) {
       handleSlideChange(activeSlide + 1);
-      setAnimation(true);
     }
+    if (activeSlide === promoProductsCount - 1) {
+      handleSlideChange(0);
+    }
+    setAnimation(true);
   };
 
   return (

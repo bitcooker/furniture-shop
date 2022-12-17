@@ -1,11 +1,20 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/mediaQueriesMixins.scss";
 
 .root {
   .panelBar {
     margin-bottom: 30px;
     position: relative;
 
-    :global(.row) > * {
+    @include for-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include for-phone {
+      margin-bottom: 80px;
+    }
+
+    :global(.row)>* {
       border-bottom: 4px solid $newFurniture-bottom-line-color;
     }
 
@@ -33,10 +42,12 @@
 
     .menu {
       text-align: center;
+
       ul {
         margin: 0;
         padding: 0;
         list-style: none;
+
         li {
           display: inline-block;
           margin: 0 0.5rem;
@@ -52,6 +63,7 @@
             &.active,
             &:hover {
               @include bg-hover-animation;
+
               &::before {
                 content: "";
                 position: absolute;
@@ -71,6 +83,15 @@
       right: 0;
       top: 0;
 
+      @include for-tablet {
+        position: relative;
+        margin: 0 auto;
+      }
+
+      @include for-phone {
+        top: 60px;
+      }
+
       ul {
         margin: 0;
         padding: 0 0 0 1rem;
@@ -87,7 +108,7 @@
             width: 13px;
             height: 13px;
             border-radius: 6px;
-            background-color:$newFurniture-dots-bg;
+            background-color: $newFurniture-dots-bg;
             font-size: 0;
 
             &.active,
