@@ -2,18 +2,18 @@ import React from 'react';
 import styles from './ImageSlider.module.scss';
 import PropTypes from 'prop-types';
 
-const ImageSlider = ({ topSeller }) => {
+const ImageSlider = ({ activeImage }) => {
   return (
     <img
       className={styles.image}
-      src={`${process.env.PUBLIC_URL}/images/products/${topSeller[2].image}`}
+      src={`${process.env.PUBLIC_URL}/images/products/${activeImage}`}
       alt='chair'
     />
   );
 };
 
 ImageSlider.propTypes = {
-  topSeller: PropTypes.node,
+  activeImage: PropTypes.node,
 };
 
 export default ImageSlider;
