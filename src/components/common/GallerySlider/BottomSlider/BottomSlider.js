@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './ReactSlick.css';
 
-const BottomSlider = ({ topSeller, setActiveImage }) => {
+const BottomSlider = ({ topSeller, setActiveElement }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -59,9 +59,8 @@ const BottomSlider = ({ topSeller, setActiveImage }) => {
     ],
   };
 
-  const handleActivePhoto = image => {
-    console.log(image);
-    setActiveImage(image);
+  const handleActivePhoto = item => {
+    setActiveElement(item);
   };
 
   return (
@@ -75,7 +74,7 @@ const BottomSlider = ({ topSeller, setActiveImage }) => {
               src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
               alt='furniture'
               data-image={item.image}
-              onClick={() => handleActivePhoto(item.image)}
+              onClick={() => handleActivePhoto(item)}
             />
           ))}
         </Slider>
@@ -86,7 +85,6 @@ const BottomSlider = ({ topSeller, setActiveImage }) => {
 
 BottomSlider.propTypes = {
   topSeller: PropTypes.node,
-  activeImage: PropTypes.node,
-  setActiveImage: PropTypes.node,
+  setActiveElement: PropTypes.node,
 };
 export default BottomSlider;

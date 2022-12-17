@@ -8,35 +8,29 @@ import Badge from './Badge/Badge';
 import PanelTopButtons from './PanelTopButtons/PanelTopButtons';
 import Promo from './Promo/Promo';
 import ImageSlider from './ImageSlider/ImageSlider';
-import PropTypes from 'prop-types';
 
 const GallerySlider = () => {
   const topSeller = useSelector(getAll);
-  const [activeImage, setActiveImage] = useState('bed_13.jpg');
+  const [activeElement, setActiveElement] = useState(topSeller[0]);
 
   return (
     <div className={styles.root}>
       <PanelTopButtons />
       <PanelLeftButtons />
       <ImageSlider
-        topSeller={topSeller}
-        activeImage={activeImage}
-        setActiveImage={setActiveImage}
+        image={activeElement.image}
+        name={activeElement.name}
+        price={activeElement.price}
       />
-      <Promo topSeller={topSeller} />
-      <Badge topSeller={topSeller} />
+      <Promo price={activeElement.price} priceOld={activeElement.priceOld} />
+      <Badge name={activeElement.name} />
       <BottomSlider
         topSeller={topSeller}
-        activeImage={activeImage}
-        setActiveImage={setActiveImage}
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
       />
     </div>
   );
-};
-
-GallerySlider.propTypes = {
-  activeImage: PropTypes.node,
-  setActiveImage: PropTypes.node,
 };
 
 export default GallerySlider;

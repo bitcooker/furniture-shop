@@ -5,10 +5,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import PropTypes from 'prop-types';
 
-const Badge = ({ topSeller }) => {
+const Badge = ({ name }) => {
   return (
     <div className={styles.badge}>
-      <h5>{`${topSeller[2].name}`}</h5>
+      <h5>{`${name}`}</h5>
       <div>
         {[1, 2, 3, 4, 5].map(i => (
           <span key={i} href='#'>
@@ -29,7 +29,7 @@ const Badge = ({ topSeller }) => {
 };
 
 Badge.propTypes = {
-  topSeller: PropTypes.node,
+  name: PropTypes.string,
 };
 
 export default Badge;
