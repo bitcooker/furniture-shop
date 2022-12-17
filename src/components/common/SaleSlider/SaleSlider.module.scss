@@ -1,0 +1,55 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  margin-top: 1rem;
+  overflow: hidden;
+  .photo {
+    position: relative;
+    background: {
+      size: contain;
+      position: center;
+      repeat: no-repeat;
+    }
+
+    .image {
+      object-fit: cover;
+      width: 100%;
+      height: 436px;
+    }
+    .info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $color-grey-260;
+      background: rgba(0, 0, 0, 0.3);
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 40%;
+    }
+    .text {
+      font-weight: 300;
+      strong {
+        font-weight: 600;
+      }
+    }
+    .shopNow {
+      position: absolute;
+      bottom: -20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.fadeIn {
+  @include fadeIn;
+}
+
+.fadeOut {
+  @include fadeOut;
+}

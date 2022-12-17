@@ -74,6 +74,7 @@
           padding: 5px;
 
           &:hover {
+            @include bg-hover-animation;
             background-color: $text-color;
             color: white;
           }
@@ -139,11 +140,13 @@
               }
 
               &:hover .dropDown ul {
+                @include bg-hover-animation;
                 position: absolute;
                 left: 5px;
               }
 
               &:hover .selectLabel {
+                @include bg-hover-animation;
                 position: relative;
                 left: -15px;
                 width: 100%;

@@ -2,7 +2,7 @@
 
 $white: #ffffff;
 $primary: #d58e32;
-$shadow-black:rgba(1, 2, 2, 0.2);
+$shadow-black: rgba(1, 2, 2, 0.2);
 $color-grey-960: #f4f5f7;
 $color-grey-900: rgb(224, 227, 237);
 $color-grey-880: #e1e1e1;
@@ -15,7 +15,6 @@ $color-grey-210: #363636;
 $color-grey-165: #2a2a2a;
 $color-grey-160: #292929;
 $text-color: $color-grey-165;
-
 
 //COLOR VARIABLES USED IN PROJECT
 
@@ -30,7 +29,7 @@ $featureBox-border-color-before: $color-grey-710;
 $featureBox-bg-before: $white;
 $featureBox-border-color-after: $color-grey-710;
 $featureBox-icon-color: $text-color;
-$featureBox-content-color:$color-grey-165;
+$featureBox-content-color: $color-grey-165;
 $featureBox-active-bg-color: $primary;
 $featureBox-active-border-color: $primary;
 $featureBox-active-icon-color: $white;
@@ -66,7 +65,6 @@ $productSearch-select-outline: $primary;
 $productSearch-select-bg: $white;
 $productSearch-select-bg-hover: $primary;
 $productSearch-select-color-hover: $white;
-
 
 //CompanyClaim
 $companyClaim-bg: $color-grey-210;
@@ -135,3 +133,53 @@ $gallery-btn-right-bg:#79ae30;
 
 //OTHER SETTINGS
 $base-padding: 24px;
+
+//Animations
+$transition-time: 250ms;
+$transition-delay-text: 250ms;
+$transition-delay-bg: 150ms;
+
+@mixin text-hover-animation {
+  transition-property: color;
+  transition-duration: $transition-time;
+  transition-timing-function: linear;
+  transition-delay: $transition-delay-text;
+}
+
+@mixin bg-hover-animation {
+  transition-property: background-color;
+  transition-duration: $transition-time;
+  transition-timing-function: linear;
+  transition-delay: $transition-delay-bg;
+}
+
+//FadeAnimation
+$opacity-small: 0.2;
+$opacity-big: 1;
+$animation-duration: 0.4s;
+
+@mixin fadeIn {
+  animation-name: fadeIn;
+  animation-duration: $animation-duration;
+  @keyframes fadeIn {
+    from {
+      opacity: $opacity-small;
+    }
+    to {
+      opacity: $opacity-big;
+    }
+  }
+}
+
+@mixin fadeOut {
+  animation-name: fadeOut;
+  animation-duration: $animation-duration;
+  @keyframes fadeOut {
+    from {
+      opacity: $opacity-big;
+    }
+    to {
+      opacity: $opacity-small;
+    }
+  }
+}
