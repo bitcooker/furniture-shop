@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { editProduct, getComparedProducts } from '../../../redux/productsRedux';
 import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
@@ -11,34 +9,25 @@ import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
 import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
+import { useProductsAction } from '../../../hooks/product-hook';
 
 const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
   const [isShown, setIsShown] = useState(false);
-  const dispatch = useDispatch();
-
-  const products = useSelector(state => getComparedProducts(state));
+  const { favoriteAction, compareAction } = useProductsAction();
+  const product = {
+    id: props.id,
+    isFavorite: props.isFavorite,
+    isCompared: isCompared,
+  };
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
-    const payload = {
-      id: props.id,
-      isFavorite: !props.isFavorite,
-    };
-    dispatch(editProduct(payload));
+    favoriteAction(product);
   };
 
   const handleAddToCompare = e => {
     e.preventDefault();
-
-    const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
-
-    if (!comparedProductNumberMoreThenFour) {
-      const payload = {
-        id: props.id,
-        isCompared: !isCompared,
-      };
-      dispatch(editProduct(payload));
-    }
+    compareAction(product);
   };
 
   return (
@@ -61,12 +50,12 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
               isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
             }
           >
-            <NewFurnitureProductButtons />
+            <NewFurnitureProductButtons id={props.id} />
           </div>
         )}
         {hotDeals && (
           <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
-            <HotDealsIcons />
+            <HotDealsIcons id={props.id} />
           </div>
         )}
       </div>
