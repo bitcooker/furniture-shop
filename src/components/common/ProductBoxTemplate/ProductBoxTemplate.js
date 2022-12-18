@@ -9,11 +9,11 @@ import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
 import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
-import { useProductsAction } from '../../../hooks/product-hook';
+import { useProductsAction } from '../../../hooks/use-Product-action';
 
 const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
   const [isShown, setIsShown] = useState(false);
-  const { favoriteAction, compareAction } = useProductsAction();
+  const { favoriteAction, addToCompare } = useProductsAction();
   const product = {
     id: props.id,
     isFavorite: props.isFavorite,
@@ -27,7 +27,7 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
 
   const handleAddToCompare = e => {
     e.preventDefault();
-    compareAction(product);
+    addToCompare(product);
   };
 
   return (

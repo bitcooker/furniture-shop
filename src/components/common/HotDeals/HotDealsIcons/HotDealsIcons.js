@@ -3,19 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../Button/Button';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useProductsAction } from '../../../../hooks/product-hook';
+import { useProductsAction } from '../../../../hooks/use-Product-action';
 import styles from './HotDealsIcons.module.scss';
 
 const HotDealsIcons = props => {
   const { cartAction } = useProductsAction();
 
-  const handleCart = e => {
+  const addToCart = e => {
     e.preventDefault();
     cartAction(props.id);
   };
   return (
     <>
-      <Button variant='small' onClick={handleCart}>
+      <Button variant='small' onClick={addToCart}>
         <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
       </Button>
       <div className={styles.clock}>

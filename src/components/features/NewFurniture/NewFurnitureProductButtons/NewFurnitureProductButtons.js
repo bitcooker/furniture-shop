@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../../../common/Button/Button';
-import { useProductsAction } from '../../../../hooks/product-hook';
+import { useProductsAction } from '../../../../hooks/use-Product-action';
 
 const NewFurnitureProductButtons = props => {
   const { cartAction } = useProductsAction();
 
-  const handleCart = e => {
+  const addToCart = e => {
     e.preventDefault();
     cartAction(props.id);
   };
@@ -16,7 +16,7 @@ const NewFurnitureProductButtons = props => {
   return (
     <>
       <Button variant='small'>Quick View</Button>
-      <Button variant='small' onClick={handleCart}>
+      <Button variant='small' onClick={addToCart}>
         <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
       </Button>
     </>

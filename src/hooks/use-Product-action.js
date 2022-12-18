@@ -15,7 +15,7 @@ export const useProductsAction = product => {
     dispatch(editProduct(payload));
   };
 
-  const compareAction = product => {
+  const addToCompare = product => {
     const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
     if (!comparedProductNumberMoreThenFour) {
       const payload = {
@@ -43,5 +43,5 @@ export const useProductsAction = product => {
     }
   };
 
-  return { favoriteAction, compareAction, cartAction };
+  return { favoriteAction, addToCompare, cartAction };
 };
