@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './GallerySlider.module.scss';
 import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/productsRedux';
@@ -12,14 +12,30 @@ import ImageSlider from './ImageSlider/ImageSlider';
 const GallerySlider = () => {
   const topSeller = useSelector(getAll);
 
+  const [isFeatured, setIsFeatured] = useState(true);
+  const [isTopSeller, setIsTopSeller] = useState(false);
+  const [isSaleOff, setIsSaleOff] = useState(false);
+  const [isTopRated, setIsTopRated] = useState(false);
+
   return (
     <div className={styles.root}>
-      <PanelTopButtons />
+      <PanelTopButtons
+        setIsFeatured={setIsFeatured}
+        setIsTopSeller={setIsTopSeller}
+        setIsSaleOff={setIsSaleOff}
+        setIsTopRated={setIsTopRated}
+      />
       <PanelLeftButtons />
       <ImageSlider topSeller={topSeller} />
       <Promo topSeller={topSeller} />
       <Badge topSeller={topSeller} />
-      <Slider topSeller={topSeller} />
+      <Slider
+        topSeller={topSeller}
+        isFeatured={isFeatured}
+        isTopSeller={isTopSeller}
+        isSaleOff={isSaleOff}
+        isTopRated={isTopRated}
+      />
     </div>
   );
 };
