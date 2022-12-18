@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getBrands } from '../../../redux/brandsRedux';
 import { getMode } from '../../../redux/rwdModeRedux';
@@ -10,12 +10,17 @@ const Brands = () => {
   const visibleElements = { mobile: 2, tablet: 3, desktop: 6 };
   const [active, setActive] = useState(0);
   const [animation, setAnimation] = useState(false);
+  const [activeBrands, setActiveBrands] = useState([[active]]);
 
-  let activeBrands = [];
-  for (let i = 0; i < brands.length; i += visibleElements[mode]) {
-    const chunk = brands.slice(i, i + visibleElements[mode]);
-    activeBrands.push(chunk);
-  }
+  useEffect(() => {
+    let activeBrands = [];
+    for (let i = 0; i < brands.length; i += visibleElements[mode]) {
+      const chunk = brands.slice(i, i + visibleElements[mode]);
+      activeBrands.push(chunk);
+    }
+    setActiveBrands(activeBrands);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode]);
 
   const handleSlideChange = newSlide => {
     setTimeout(() => {
@@ -47,12 +52,12 @@ const Brands = () => {
   return (
     <div className='container mt-3 mb-5'>
       <div className={`border-top border-bottom ${styles.brands}`}>
-        <div onClick={() => prevPart()} className={`border m-3 ${styles.arrow}`}>
+        <div onClick={prevPart} className={`border m-3 ${styles.arrow}`}>
           <span className='text-muted'>{'<'}</span>
         </div>
         <div className='row d-flex align-item-center  m-3 text-center'>
           {activeBrands[active].map(item => (
-            <div key={item.id} className='col border m-2'>
+            <div key={item} className='col border m-2'>
               <img
                 className={`${styles.image} ${
                   animation ? styles.fadeOut : styles.fadeIn
@@ -63,7 +68,7 @@ const Brands = () => {
             </div>
           ))}
         </div>
-        <div onClick={() => nextPart()} className={`border m-3 ${styles.arrow}`}>
+        <div onClick={nextPart} className={`border m-3 ${styles.arrow}`}>
           <span className='text-muted'>{'>'}</span>
         </div>
       </div>
