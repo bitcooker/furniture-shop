@@ -2,17 +2,18 @@ import React from 'react';
 import styles from './Promo.module.scss';
 import PropTypes from 'prop-types';
 
-const Promo = ({ topSeller }) => {
+const Promo = ({ price, priceOld }) => {
   return (
     <div className={styles.promo}>
-      <h4>${`${topSeller[2].price}`}</h4>
-      {topSeller[1].priceOld && <h6>${`${topSeller[1].priceOld}`}</h6>}
+      <h4>${price}</h4>
+      {priceOld && <h6>${priceOld}</h6>}
     </div>
   );
 };
 
 Promo.propTypes = {
-  topSeller: PropTypes.node,
+  price: PropTypes.number,
+  priceOld: PropTypes.number,
 };
 
 export default Promo;

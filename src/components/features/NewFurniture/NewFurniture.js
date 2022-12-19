@@ -11,14 +11,34 @@ class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    newFurnitureAnimation: false,
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    const animationTime = 250; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        newFurnitureAnimation: false,
+        activePage: newPage,
+      });
+    }, animationTime);
   }
 
-  handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+  handleCategoryChange(newCategory, productsRef) {
+    const animationTime = 350; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        newFurnitureAnimation: false,
+        activePage: 0,
+      });
+    }, animationTime);
   }
 
   getDisplayedProductsCount(rwdMode) {
@@ -68,11 +88,13 @@ class NewFurniture extends React.Component {
   }
 
   render() {
+    const { activeCategory, activePage, newFurnitureAnimation } = this.state;
     const { categories, products, rwdMode } = this.props;
-    const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    this.productsRef = React.createRef();
 
     const dots = [];
     for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
@@ -103,7 +125,9 @@ class NewFurniture extends React.Component {
                     <li key={item.id}>
                       <a
                         className={item.id === activeCategory && styles.active}
-                        onClick={() => this.handleCategoryChange(item.id)}
+                        onClick={() =>
+                          this.handleCategoryChange(item.id, this.productsRef)
+                        }
                       >
                         {item.name}
                       </a>
