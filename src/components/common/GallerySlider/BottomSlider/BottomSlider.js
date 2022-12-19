@@ -70,62 +70,59 @@ const BottomSlider = ({
     setActiveElement(item);
   };
 
+  const filterFeatured = topSeller.filter(item => item.isFeatured === true);
+  const filterTopRated = topSeller.filter(item => item.isTopRated === true);
+  const filterSaleOff = topSeller.filter(item => item.isSaleOff === true);
+  const filterTopSeller = topSeller.filter(item => item.isTopSeller === true);
+
   return (
     <div className='gallerySlider'>
       <div className={styles.slider}>
         <Slider {...settings}>
           {isFeatured &&
-            topSeller
-              .slice(6, 14)
-              .map(item => (
-                <img
-                  className={styles.product}
-                  key={item.image}
-                  src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                  alt='furniture'
-                  data-image={item.image}
-                  onClick={() => handleActivePhoto(item)}
-                />
-              ))}
+            filterFeatured.map(item => (
+              <img
+                className={styles.product}
+                key={item.image}
+                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
+                alt='furniture'
+                data-image={item.image}
+                onClick={() => handleActivePhoto(item)}
+              />
+            ))}
           {isTopSeller &&
-            topSeller
-              .slice(8, 16)
-              .map(item => (
-                <img
-                  className={styles.product}
-                  key={item.image}
-                  src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                  alt='furniture'
-                  data-image={item.image}
-                  onClick={() => handleActivePhoto(item)}
-                />
-              ))}
+            filterTopSeller.map(item => (
+              <img
+                className={styles.product}
+                key={item.image}
+                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
+                alt='furniture'
+                data-image={item.image}
+                onClick={() => handleActivePhoto(item)}
+              />
+            ))}
           {isSaleOff &&
-            topSeller
-              .slice(0, 14)
-              .map(item => (
-                <img
-                  className={styles.product}
-                  key={item.image}
-                  src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                  alt='furniture'
-                  data-image={item.image}
-                  onClick={() => handleActivePhoto(item)}
-                />
-              ))}
+            filterSaleOff.map(item => (
+              <img
+                className={styles.product}
+                key={item.image}
+                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
+                alt='furniture'
+                data-image={item.image}
+                onClick={() => handleActivePhoto(item)}
+              />
+            ))}
           {isTopRated &&
-            topSeller
-              .slice(0, 14)
-              .map(item => (
-                <img
-                  className={styles.product}
-                  key={item.image}
-                  src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                  alt='furniture'
-                  data-image={item.image}
-                  onClick={() => handleActivePhoto(item)}
-                />
-              ))}
+            filterTopRated.map(item => (
+              <img
+                className={styles.product}
+                key={item.image}
+                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
+                alt='furniture'
+                data-image={item.image}
+                onClick={() => handleActivePhoto(item)}
+              />
+            ))}
         </Slider>
       </div>
     </div>
