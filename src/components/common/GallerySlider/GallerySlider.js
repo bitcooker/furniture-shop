@@ -11,12 +11,18 @@ import ImageSlider from './ImageSlider/ImageSlider';
 
 const GallerySlider = () => {
   const topSeller = useSelector(getAll);
-  const [activeElement, setActiveElement] = useState(topSeller[0]);
 
   const [isFeatured, setIsFeatured] = useState(true);
   const [isTopSeller, setIsTopSeller] = useState(false);
   const [isSaleOff, setIsSaleOff] = useState(false);
   const [isTopRated, setIsTopRated] = useState(false);
+
+  const filterFeatured = topSeller.filter(item => item.isFeatured === true);
+  const filterTopRated = topSeller.filter(item => item.isTopRated === true);
+  const filterSaleOff = topSeller.filter(item => item.isSaleOff === true);
+  const filterTopSeller = topSeller.filter(item => item.isTopSeller === true);
+
+  const [activeElement, setActiveElement] = useState(topSeller[0]);
 
   return (
     <div className={styles.root}>
@@ -37,9 +43,12 @@ const GallerySlider = () => {
         price={activeElement.price}
       />
       <Promo price={activeElement.price} priceOld={activeElement.priceOld} />
-      <Badge name={activeElement.name} />
+      <Badge name={activeElement.name} {...activeElement} />
       <BottomSlider
-        topSeller={topSeller}
+        filterFeatured={filterFeatured}
+        filterSaleOff={filterSaleOff}
+        filterTopSeller={filterTopSeller}
+        filterTopRated={filterTopRated}
         activeElement={activeElement}
         setActiveElement={setActiveElement}
         isFeatured={isFeatured}

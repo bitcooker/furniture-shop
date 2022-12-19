@@ -7,7 +7,10 @@ import Slider from 'react-slick';
 import './ReactSlick.css';
 
 const BottomSlider = ({
-  topSeller,
+  filterFeatured,
+  filterSaleOff,
+  filterTopRated,
+  filterTopSeller,
   setActiveElement,
   isFeatured,
   isTopSeller,
@@ -70,11 +73,6 @@ const BottomSlider = ({
     setActiveElement(item);
   };
 
-  const filterFeatured = topSeller.filter(item => item.isFeatured === true);
-  const filterTopRated = topSeller.filter(item => item.isTopRated === true);
-  const filterSaleOff = topSeller.filter(item => item.isSaleOff === true);
-  const filterTopSeller = topSeller.filter(item => item.isTopSeller === true);
-
   return (
     <div className='gallerySlider'>
       <div className={styles.slider}>
@@ -136,5 +134,9 @@ BottomSlider.propTypes = {
   isTopSeller: PropTypes.node,
   isSaleOff: PropTypes.node,
   isTopRated: PropTypes.node,
+  filterFeatured: PropTypes.func,
+  filterTopSeller: PropTypes.func,
+  filterTopRated: PropTypes.func,
+  filterSaleOff: PropTypes.func,
 };
 export default BottomSlider;

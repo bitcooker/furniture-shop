@@ -91,10 +91,10 @@ PanelTopButtons.propTypes = {
   setIsTopSeller: PropTypes.node,
   setIsSaleOff: PropTypes.node,
   setIsTopRated: PropTypes.node,
-  isFeatured: PropTypes.node,
-  isTopSeller: PropTypes.node,
-  isSaleOff: PropTypes.node,
-  isTopRated: PropTypes.node,
+  isFeatured: PropTypes.bool,
+  isTopSeller: PropTypes.bool,
+  isSaleOff: PropTypes.bool,
+  isTopRated: PropTypes.bool,
 };
 
 export default PanelTopButtons;
