@@ -21,9 +21,13 @@ const GallerySlider = () => {
   return (
     <div className={styles.root}>
       <PanelTopButtons
+        isFeatured={isFeatured}
         setIsFeatured={setIsFeatured}
+        isTopSeller={isTopSeller}
         setIsTopSeller={setIsTopSeller}
+        isSaleOff={isSaleOff}
         setIsSaleOff={setIsSaleOff}
+        isTopRated={isTopRated}
         setIsTopRated={setIsTopRated}
       />
       <PanelLeftButtons />
@@ -38,6 +42,10 @@ const GallerySlider = () => {
         topSeller={topSeller}
         activeElement={activeElement}
         setActiveElement={setActiveElement}
+        isFeatured={isFeatured}
+        isTopRated={isTopRated}
+        isTopSeller={isTopSeller}
+        isSaleOff={isSaleOff}
       />
     </div>
   );

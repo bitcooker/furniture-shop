@@ -76,7 +76,7 @@ const BottomSlider = ({
         <Slider {...settings}>
           {isFeatured &&
             topSeller
-              .slice(0, 14)
+              .slice(6, 14)
               .map(item => (
                 <img
                   className={styles.product}
@@ -89,7 +89,7 @@ const BottomSlider = ({
               ))}
           {isTopSeller &&
             topSeller
-              .slice(0, 14)
+              .slice(8, 16)
               .map(item => (
                 <img
                   className={styles.product}
