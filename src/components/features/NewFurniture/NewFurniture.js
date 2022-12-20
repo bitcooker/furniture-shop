@@ -88,7 +88,6 @@ class NewFurniture extends React.Component {
   }
 
   render() {
-
     const { activeCategory, activePage, newFurnitureAnimation } = this.state;
     const { categories, products, rwdMode } = this.props;
 
