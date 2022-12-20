@@ -1,33 +1,103 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { RWD_MODES } from '../../../redux/initialState';
+
 import styles from './NewFurniture.module.scss';
-import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
 
 class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    newFurnitureAnimation: false,
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    const animationTime = 250; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        newFurnitureAnimation: false,
+        activePage: newPage,
+      });
+    }, animationTime);
   }
 
-  handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+  handleCategoryChange(newCategory, productsRef) {
+    const animationTime = 350; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        newFurnitureAnimation: false,
+        activePage: 0,
+      });
+    }, animationTime);
+  }
+
+  getDisplayedProductsCount(rwdMode) {
+    switch (rwdMode) {
+      case RWD_MODES.DESKTOP:
+        return 8;
+      case RWD_MODES.TABLET:
+        return 4;
+      case RWD_MODES.MOBILE:
+        return 1;
+      default:
+        return 1;
+    }
+  }
+
+  getProducts(categoryProducts, activePage, rwdMode) {
+    const displayedProductsCount = this.getDisplayedProductsCount(rwdMode);
+
+    return (
+      <>
+        {categoryProducts
+          .slice(
+            activePage * displayedProductsCount,
+            (activePage + 1) * displayedProductsCount
+          )
+          .map(item => (
+            <div key={item.id} className='col-12 col-md-6 col-lg-3 '>
+              <ProductBoxTemplate {...item} newFurniture={true} />
+            </div>
+          ))}
+      </>
+    );
+  }
+
+  getDots(categoryProducts, rwdMode) {
+    let dotsNumber = 0;
+
+    if (rwdMode === RWD_MODES.DESKTOP) {
+      dotsNumber = Math.ceil(categoryProducts.length / 8);
+    } else if (rwdMode === RWD_MODES.TABLET) {
+      dotsNumber = Math.ceil(categoryProducts.length / 4);
+    } else {
+      dotsNumber = Math.ceil(categoryProducts.length / 1);
+    }
+
+    return dotsNumber;
   }
 
   render() {
-    const { categories, products } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { activeCategory, activePage, newFurnitureAnimation } = this.state;
+    const { categories, products, rwdMode } = this.props;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
 
+    this.productsRef = React.createRef();
+
     const dots = [];
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
       dots.push(
         <li>
           <a
@@ -49,13 +119,15 @@ class NewFurniture extends React.Component {
               <div className={'col-auto ' + styles.heading}>
                 <h3>New furniture</h3>
               </div>
-              <div className={'col ' + styles.menu}>
+              <div className={'col-md-8 col-lg-9 col-xl-10 ' + styles.menu}>
                 <ul>
                   {categories.map(item => (
                     <li key={item.id}>
                       <a
                         className={item.id === activeCategory && styles.active}
-                        onClick={() => this.handleCategoryChange(item.id)}
+                        onClick={() =>
+                          this.handleCategoryChange(item.id, this.productsRef)
+                        }
                       >
                         {item.name}
                       </a>
@@ -79,13 +151,7 @@ class NewFurniture extends React.Component {
             }
           >
             <div className='row'>
-              {categoryProducts
-                .slice(activePage * 8, (activePage + 1) * 8)
-                .map(item => (
-                  <div key={item.id} className='col-3'>
-                    <ProductBox {...item} />
-                  </div>
-                ))}
+              {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>
         </div>
@@ -114,11 +180,13 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  rwdMode: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
   categories: [],
   products: [],
+  rwdMode: RWD_MODES.DESKTOP,
 };
 
 export default NewFurniture;

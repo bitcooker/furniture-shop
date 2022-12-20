@@ -40,10 +40,12 @@ $product-height: 130px;
     }
 
     &:hover {
+        @include bg-hover-animation;
         cursor: pointer;
     }
 
     &:hover .removeIcon {
+        @include bg-hover-animation;
         display: grid;
     }
 }
