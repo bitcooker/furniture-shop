@@ -22,7 +22,17 @@ const GallerySlider = () => {
   const filterSaleOff = topSeller.filter(item => item.isSaleOff === true);
   const filterTopSeller = topSeller.filter(item => item.isTopSeller === true);
 
-  const [activeElement, setActiveElement] = useState(topSeller[0]);
+  const [activeElement, setActiveElement] = useState(
+    isFeatured
+      ? filterFeatured[0]
+      : isSaleOff
+      ? filterSaleOff[0]
+      : isTopRated
+      ? filterTopRated[0]
+      : isTopSeller
+      ? filterTopSeller[0]
+      : topSeller[0]
+  );
 
   return (
     <div className={styles.root}>
