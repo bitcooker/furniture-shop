@@ -6,6 +6,7 @@ import { RWD_MODES } from '../../../redux/initialState';
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
+import Dots from '../../common/Dot/Dots';
 
 class NewFurniture extends React.Component {
   state = {
@@ -88,7 +89,6 @@ class NewFurniture extends React.Component {
   }
 
   render() {
-
     const { activeCategory, activePage, newFurnitureAnimation } = this.state;
     const { categories, products, rwdMode } = this.props;
 
@@ -97,20 +97,9 @@ class NewFurniture extends React.Component {
 
     this.productsRef = React.createRef();
 
-    const dots = [];
-    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
-      dots.push(
-        <li>
-          <a
-            onChange={() => this.handlePageChange(i)}
-            onClick={() => this.handlePageChange(i)}
-            className={i === activePage && styles.active}
-          >
-            page {i}
-          </a>
-        </li>
-      );
-    }
+    const changePage = pageNumber => {
+      this.setState({ activePage: pageNumber });
+    };
 
     return (
       <div className={styles.root}>
@@ -136,9 +125,11 @@ class NewFurniture extends React.Component {
                   ))}
                 </ul>
               </div>
-              <div className={'col-auto ' + styles.dots}>
-                <ul>{dots}</ul>
-              </div>
+              <Dots
+                changeEvent={changePage}
+                activeNumber={activePage}
+                dotsNumber={this.getDots(categoryProducts, rwdMode)}
+              />
             </div>
           </div>
           <Swipeable
