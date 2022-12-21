@@ -3,8 +3,13 @@ import styles from './Cart.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import Button from '../Button/Button';
+import { useSelector } from 'react-redux';
+import { getCart } from '../../../redux/cartRedux';
+import CartItem from '../CartItem/CartItem';
 
 const Cart = () => {
+  const cartItems = useSelector(state => getCart(state));
+
   const [show, setShow] = useState(false);
   const [animation, setAnimation] = useState(false);
 
@@ -44,7 +49,13 @@ const Cart = () => {
             </Button>
           </div>
           <div className={styles.line}></div>
-          <div className={styles.products}>Your cart is empty</div>
+          <div className={styles.products}>
+            <ul>
+              {cartItems.map(item => (
+                <CartItem key={item.id} itemId={item.id} itemQuantity={item.quantity} />
+              ))}
+            </ul>
+          </div>
         </div>
       )}
     </>

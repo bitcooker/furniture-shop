@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Cart from './Cart';
+import CartItem from './CartItem';
 
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-describe('Component Cart', () => {
+describe('Component CartItem', () => {
   const initialState = { output: 10 };
   const mockStore = configureStore();
   let store;
@@ -14,7 +14,7 @@ describe('Component Cart', () => {
     store = mockStore(initialState);
     const component = shallow(
       <Provider store={store}>
-        <Cart />
+        <CartItem />
       </Provider>
     );
     expect(component).toBeTruthy();

@@ -463,7 +463,20 @@ const initialState = {
     },
   ],
   cart: {
-    products: [],
+    products: [
+      {
+        id: 'aenean-ru-bristique-1',
+        quantity: 1,
+      },
+      {
+        id: 'aenean-ru-bristique-2',
+        quantity: 5,
+      },
+      {
+        id: 'aenean-ru-bristique-4',
+        quantity: 2,
+      },
+    ],
   },
   feedback: [
     {
