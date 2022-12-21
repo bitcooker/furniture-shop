@@ -24,7 +24,7 @@ const Cart = () => {
     <>
       <div className={`col text-right ${styles.cart}`}>
         <a href='#' className={styles.cartBox}>
-          <div className={styles.cartIcon} onClick={handleOpen}>
+          <div className={styles.cartIcon} onClick={show ? handleClose : handleOpen}>
             <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
           </div>
           <div className={styles.cartCounter}>0</div>
