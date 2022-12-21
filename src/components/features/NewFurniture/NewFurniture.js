@@ -98,7 +98,16 @@ class NewFurniture extends React.Component {
     this.productsRef = React.createRef();
 
     const changePage = pageNumber => {
-      this.setState({ activePage: pageNumber });
+      const animationTime = 250; // in ms
+
+      this.setState({ newFurnitureAnimation: true });
+
+      setTimeout(() => {
+        this.setState({
+          newFurnitureAnimation: false,
+          activePage: pageNumber,
+        });
+      }, animationTime);
     };
 
     return (
@@ -142,7 +151,11 @@ class NewFurniture extends React.Component {
               activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
             }
           >
-            <div className='row'>
+            <div
+              className={`row ${styles.products} ${
+                newFurnitureAnimation ? styles.fadeOut : styles.fadeIn
+              }`}
+            >
               {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>
