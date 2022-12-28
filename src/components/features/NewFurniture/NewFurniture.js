@@ -6,6 +6,7 @@ import { RWD_MODES } from '../../../redux/initialState';
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
+import Dots from '../../common/Dot/Dots';
 
 class NewFurniture extends React.Component {
   state = {
@@ -96,20 +97,18 @@ class NewFurniture extends React.Component {
 
     this.productsRef = React.createRef();
 
-    const dots = [];
-    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
-      dots.push(
-        <li>
-          <a
-            onChange={() => this.handlePageChange(i)}
-            onClick={() => this.handlePageChange(i)}
-            className={i === activePage && styles.active}
-          >
-            page {i}
-          </a>
-        </li>
-      );
-    }
+    const changePage = pageNumber => {
+      const animationTime = 250; // in ms
+
+      this.setState({ newFurnitureAnimation: true });
+
+      setTimeout(() => {
+        this.setState({
+          newFurnitureAnimation: false,
+          activePage: pageNumber,
+        });
+      }, animationTime);
+    };
 
     return (
       <div className={styles.root}>
@@ -135,8 +134,12 @@ class NewFurniture extends React.Component {
                   ))}
                 </ul>
               </div>
-              <div className={'col-auto ' + styles.dots}>
-                <ul>{dots}</ul>
+              <div className={styles.dotsContainer}>
+                <Dots
+                  changeEvent={changePage}
+                  activeNumber={activePage}
+                  dotsNumber={this.getDots(categoryProducts, rwdMode)}
+                />
               </div>
             </div>
           </div>
@@ -150,7 +153,11 @@ class NewFurniture extends React.Component {
               activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
             }
           >
-            <div className='row'>
+            <div
+              className={`row ${styles.products} ${
+                newFurnitureAnimation ? styles.fadeOut : styles.fadeIn
+              }`}
+            >
               {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>

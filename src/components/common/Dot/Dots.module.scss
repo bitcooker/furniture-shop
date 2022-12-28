@@ -1,0 +1,36 @@
+@import "../../../styles/mediaQueriesMixins.scss";
+@import "../../../styles/settings.scss";
+
+.dots {
+  position: relative;
+  display: grid;
+  place-content: center;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+
+      a {
+        display: block;
+        width: 13px;
+        height: 13px;
+        border-radius: 6px;
+        background-color: $newFurniture-dots-bg;
+        font-size: 0;
+
+        &.active,
+        &:hover {
+          @include bg-hover-animation;
+          background-color: $newFurniture-active-dots-bg;
+        }
+      }
+    }
+  }
+}

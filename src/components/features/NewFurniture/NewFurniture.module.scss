@@ -5,7 +5,7 @@
   .panelBar {
     margin-bottom: 30px;
     position: relative;
-
+    border-bottom: 4px solid $newFurniture-bottom-line-color;
 
     @include for-tablet {
       margin-bottom: 80px;
@@ -13,10 +13,6 @@
 
     @include for-phone {
       margin-bottom: 80px;
-    }
-
-    :global(.row)>* {
-      border-bottom: 4px solid $newFurniture-bottom-line-color;
     }
 
     .heading {
@@ -39,6 +35,26 @@
         width: 45px;
         border-bottom: 4px solid $newFurniture-active-line-color;
       }
+    }
+
+    .dotsContainer {
+      position: relative;
+      top: 40px;
+      padding: 15px;
+      display: grid;
+      place-content: center;
+      width: 100%;
+
+      @include for-tablet {
+        padding: 10;
+      }
+
+      @include for-phone {
+        position: absolute;
+        top: 70px;
+        padding: 10;
+      }
+
     }
 
     .menu {
@@ -79,48 +95,6 @@
       }
     }
 
-    .dots {
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      @include for-tablet {
-        position: relative;
-        margin: 0 auto;
-      }
-
-      @include for-phone {
-        top: 60px;
-      }
-
-      ul {
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        background-color: $newFurniture-dots-ul-bg;
-        transform: translateY(15px);
-
-        li {
-          display: inline-block;
-          margin-left: 0.5rem;
-
-          a {
-            display: block;
-            width: 13px;
-            height: 13px;
-            border-radius: 6px;
-            background-color: $newFurniture-dots-bg;
-            font-size: 0;
-
-            &.active,
-            &:hover {
-              @include bg-hover-animation;
-              background-color: $newFurniture-active-dots-bg;
-            }
-          }
-        }
-      }
-    }
   }
 
   .products {
