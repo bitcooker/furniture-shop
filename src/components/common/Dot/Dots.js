@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Dots.module.scss';
 
-const Dots = ({ changeEvent, activeNumber, dotsNumber, isHotDeals }) => {
+const Dots = ({ changeEvent, activeNumber, dotsNumber }) => {
   const [dots, setDots] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Dots = ({ changeEvent, activeNumber, dotsNumber, isHotDeals }) => {
   }, [dotsNumber, activeNumber, changeEvent]);
 
   return (
-    <div className={`col-auto ${isHotDeals ? styles.hotDealsDots : styles.dots}`}>
+    <div className={`col-auto ${styles.dots}`}>
       <ul>{dots}</ul>
     </div>
   );

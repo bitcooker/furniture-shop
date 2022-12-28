@@ -69,7 +69,6 @@ const HotDeals = () => {
           changeEvent={handleOnClick}
           activeNumber={activeProduct}
           dotsNumber={productCount}
-          isHotDeals={true}
         />
       </div>
       <div className={animation ? styles.fadeOut : styles.fadeIn}>

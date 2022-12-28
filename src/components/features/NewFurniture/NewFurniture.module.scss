@@ -5,7 +5,7 @@
   .panelBar {
     margin-bottom: 30px;
     position: relative;
-
+    border-bottom: 4px solid $newFurniture-bottom-line-color;
 
     @include for-tablet {
       margin-bottom: 80px;
@@ -13,10 +13,6 @@
 
     @include for-phone {
       margin-bottom: 80px;
-    }
-
-    :global(.row)>* {
-      border-bottom: 4px solid $newFurniture-bottom-line-color;
     }
 
     .heading {
@@ -39,6 +35,26 @@
         width: 45px;
         border-bottom: 4px solid $newFurniture-active-line-color;
       }
+    }
+
+    .dotsContainer {
+      position: relative;
+      top: 40px;
+      padding: 15px;
+      display: grid;
+      place-content: center;
+      width: 100%;
+
+      @include for-tablet {
+        padding: 10;
+      }
+
+      @include for-phone {
+        position: absolute;
+        top: 70px;
+        padding: 10;
+      }
+
     }
 
     .menu {

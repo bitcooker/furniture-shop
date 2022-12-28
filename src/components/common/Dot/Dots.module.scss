@@ -2,76 +2,35 @@
 @import "../../../styles/settings.scss";
 
 .dots {
-    position: absolute;
-    right: 0;
-    top: 0;
+  position: relative;
+  display: grid;
+  place-content: center;
 
-    @include for-tablet {
-        position: relative;
-        margin: 0 auto;
-    }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-    @include for-phone {
-        top: 60px;
-    }
+    li {
 
-    ul {
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        background-color: $newFurniture-dots-ul-bg;
-        transform: translateY(15px);
+      a {
+        display: block;
+        width: 13px;
+        height: 13px;
+        border-radius: 6px;
+        background-color: $newFurniture-dots-bg;
+        font-size: 0;
 
-        li {
-            display: inline-block;
-            margin-left: 0.5rem;
-
-            a {
-                display: block;
-                width: 13px;
-                height: 13px;
-                border-radius: 6px;
-                background-color: $newFurniture-dots-bg;
-                font-size: 0;
-
-                &.active,
-                &:hover {
-                    @include bg-hover-animation;
-                    background-color: $newFurniture-active-dots-bg;
-                }
-            }
+        &.active,
+        &:hover {
+          @include bg-hover-animation;
+          background-color: $newFurniture-active-dots-bg;
         }
+      }
     }
-}
-
-.hotDealsDots {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    ul {
-        margin-right: 0.5rem;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        transform: translateY(15px);
-
-        li {
-            display: inline-block;
-            margin-left: 0.5rem;
-
-            a {
-                display: block;
-                width: 13px;
-                height: 13px;
-                border-radius: 6px;
-                background-color: $newFurniture-dots-bg;
-                font-size: 0;
-
-                &.active,
-                &:hover {
-                    background-color: $newFurniture-active-dots-bg;
-                }
-            }
-        }
-    }
+  }
 }

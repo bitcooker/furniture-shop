@@ -134,11 +134,13 @@ class NewFurniture extends React.Component {
                   ))}
                 </ul>
               </div>
-              <Dots
-                changeEvent={changePage}
-                activeNumber={activePage}
-                dotsNumber={this.getDots(categoryProducts, rwdMode)}
-              />
+              <div className={styles.dotsContainer}>
+                <Dots
+                  changeEvent={changePage}
+                  activeNumber={activePage}
+                  dotsNumber={this.getDots(categoryProducts, rwdMode)}
+                />
+              </div>
             </div>
           </div>
           <Swipeable
