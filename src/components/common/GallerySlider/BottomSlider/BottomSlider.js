@@ -6,17 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './ReactSlick.css';
 
-const BottomSlider = ({
-  filterFeatured,
-  filterSaleOff,
-  filterTopRated,
-  filterTopSeller,
-  setActiveElement,
-  isFeatured,
-  isTopSeller,
-  isSaleOff,
-  isTopRated,
-}) => {
+const BottomSlider = ({ setActiveIndex, activeItems }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -68,59 +58,24 @@ const BottomSlider = ({
       },
     ],
   };
-
-  const handleActivePhoto = item => {
-    setActiveElement(item);
+  const handleActivePhoto = index => {
+    setActiveIndex(index);
   };
 
   return (
     <div className='gallerySlider'>
       <div className={styles.slider}>
         <Slider {...settings}>
-          {isFeatured &&
-            filterFeatured.map(item => (
-              <img
-                className={styles.product}
-                key={item.image}
-                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                alt='furniture'
-                data-image={item.image}
-                onClick={() => handleActivePhoto(item)}
-              />
-            ))}
-          {isTopSeller &&
-            filterTopSeller.map(item => (
-              <img
-                className={styles.product}
-                key={item.image}
-                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                alt='furniture'
-                data-image={item.image}
-                onClick={() => handleActivePhoto(item)}
-              />
-            ))}
-          {isSaleOff &&
-            filterSaleOff.map(item => (
-              <img
-                className={styles.product}
-                key={item.image}
-                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                alt='furniture'
-                data-image={item.image}
-                onClick={() => handleActivePhoto(item)}
-              />
-            ))}
-          {isTopRated &&
-            filterTopRated.map(item => (
-              <img
-                className={styles.product}
-                key={item.image}
-                src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
-                alt='furniture'
-                data-image={item.image}
-                onClick={() => handleActivePhoto(item)}
-              />
-            ))}
+          {activeItems.map((item, index) => (
+            <img
+              className={styles.product}
+              key={item.image}
+              src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
+              alt='furniture'
+              data-image={item.image}
+              onClick={() => handleActivePhoto(index)}
+            />
+          ))}
         </Slider>
       </div>
     </div>
@@ -128,15 +83,7 @@ const BottomSlider = ({
 };
 
 BottomSlider.propTypes = {
-  topSeller: PropTypes.node,
-  setActiveElement: PropTypes.node,
-  isFeatured: PropTypes.node,
-  isTopSeller: PropTypes.node,
-  isSaleOff: PropTypes.node,
-  isTopRated: PropTypes.node,
-  filterFeatured: PropTypes.func,
-  filterTopSeller: PropTypes.func,
-  filterTopRated: PropTypes.func,
-  filterSaleOff: PropTypes.func,
+  setActiveIndex: PropTypes.node,
+  activeItems: PropTypes.node,
 };
 export default BottomSlider;

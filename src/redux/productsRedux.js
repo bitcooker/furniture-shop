@@ -10,6 +10,8 @@ export const getDiscountedProducts = ({ products }) =>
   products.filter(item => item.priceOld);
 export const getPromoProducts = ({ products }) =>
   products.filter(item => item.promo === 'sale');
+export const getProductByTags = ({ products }, tagId) =>
+  products.filter(product => product?.tags.includes(tagId));
 /* action name creator */
 const reducerName = 'cart';
 const createActionName = name => `app/${reducerName}/${name}`;

@@ -4,97 +4,35 @@ import { useSelector } from 'react-redux';
 import { getAllTags } from '../../../../redux/tagsRedux';
 import styles from './PanelTopButtons.module.scss';
 
-const PanelTopButtons = ({
-  isFeatured,
-  isTopSeller,
-  isTopRated,
-  isSaleOff,
-  setIsFeatured,
-  setIsTopSeller,
-  setIsSaleOff,
-  setIsTopRated,
-}) => {
+const PanelTopButtons = ({ activeTag, setActiveTag }) => {
   const allTags = useSelector(getAllTags);
-
-  const handleFeatured = e => {
-    e.preventDefault();
-    setIsFeatured(true);
-    setIsSaleOff(false);
-    setIsTopRated(false);
-    setIsTopSeller(false);
-  };
-
-  const handleTopSeller = e => {
-    e.preventDefault();
-    setIsFeatured(false);
-    setIsSaleOff(false);
-    setIsTopRated(false);
-    setIsTopSeller(true);
-  };
-
-  const handleSaleOff = e => {
-    e.preventDefault();
-    setIsFeatured(false);
-    setIsSaleOff(true);
-    setIsTopRated(false);
-    setIsTopSeller(false);
-  };
-
-  const handleTopRated = e => {
-    e.preventDefault();
-    setIsFeatured(false);
-    setIsSaleOff(false);
-    setIsTopRated(true);
-    setIsTopSeller(false);
+  const handleClick = name => {
+    setActiveTag(name);
   };
 
   return (
     <div className={styles.topBtn}>
-      <a
-        href='#'
-        key={allTags[0].id}
-        onClick={handleFeatured}
-        className={isFeatured && styles.active}
-      >
-        {allTags[0].name}
-      </a>
-      <a
-        href='#'
-        key={allTags[1].id}
-        onClick={handleTopSeller}
-        className={isTopSeller && styles.active}
-      >
-        {allTags[1].name}
-      </a>
-      <a
-        href='#'
-        key={allTags[2].id}
-        onClick={handleSaleOff}
-        className={isSaleOff && styles.active}
-      >
-        {allTags[2].name}
-      </a>
-      <a
-        href='#'
-        key={allTags[3].id}
-        onClick={handleTopRated}
-        className={isTopRated && styles.active}
-      >
-        {allTags[3].name}
-      </a>
+      <ul>
+        {allTags.map(tag => (
+          <li
+            as='li'
+            href=''
+            key={tag.id}
+            data-name={tag.name}
+            onClick={() => handleClick(tag.name)}
+            className={activeTag === tag.name && styles.active}
+          >
+            {tag.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 PanelTopButtons.propTypes = {
-  setIsFeatured: PropTypes.node,
-  setIsTopSeller: PropTypes.node,
-  setIsSaleOff: PropTypes.node,
-  setIsTopRated: PropTypes.node,
-  isFeatured: PropTypes.bool,
-  isTopSeller: PropTypes.bool,
-  isSaleOff: PropTypes.bool,
-  isTopRated: PropTypes.bool,
+  activeTag: PropTypes.node,
+  setActiveTag: PropTypes.node,
 };
 
 export default PanelTopButtons;

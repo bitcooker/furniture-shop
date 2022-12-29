@@ -1,71 +1,36 @@
 import React, { useState } from 'react';
 import styles from './GallerySlider.module.scss';
-import { useSelector } from 'react-redux';
-import { getAll } from '../../../redux/productsRedux';
 import PanelLeftButtons from './PanelLeftButtons/PanelLeftButtons';
 import BottomSlider from './BottomSlider/BottomSlider';
 import Badge from './Badge/Badge';
 import PanelTopButtons from './PanelTopButtons/PanelTopButtons';
 import Promo from './Promo/Promo';
 import ImageSlider from './ImageSlider/ImageSlider';
+import { useSelector } from 'react-redux';
+import { getProductByTags } from '../../../redux/productsRedux';
 
 const GallerySlider = () => {
-  const topSeller = useSelector(getAll);
+  const [activeTag, setActiveTag] = useState('Sale Off');
 
-  const [isFeatured, setIsFeatured] = useState(true);
-  const [isTopSeller, setIsTopSeller] = useState(false);
-  const [isSaleOff, setIsSaleOff] = useState(false);
-  const [isTopRated, setIsTopRated] = useState(false);
+  const activeItems = useSelector(state => getProductByTags(state, activeTag));
 
-  const filterFeatured = topSeller.filter(item => item.isFeatured === true);
-  const filterTopRated = topSeller.filter(item => item.isTopRated === true);
-  const filterSaleOff = topSeller.filter(item => item.isSaleOff === true);
-  const filterTopSeller = topSeller.filter(item => item.isTopSeller === true);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const [activeElement, setActiveElement] = useState(
-    isFeatured
-      ? filterFeatured[0]
-      : isSaleOff
-      ? filterSaleOff[0]
-      : isTopRated
-      ? filterTopRated[0]
-      : isTopSeller
-      ? filterTopSeller[0]
-      : topSeller[0]
-  );
+  const activeElement = activeItems[activeIndex];
 
   return (
     <div className={styles.root}>
-      <PanelTopButtons
-        isFeatured={isFeatured}
-        setIsFeatured={setIsFeatured}
-        isTopSeller={isTopSeller}
-        setIsTopSeller={setIsTopSeller}
-        isSaleOff={isSaleOff}
-        setIsSaleOff={setIsSaleOff}
-        isTopRated={isTopRated}
-        setIsTopRated={setIsTopRated}
-      />
+      <PanelTopButtons activeTag={activeTag} setActiveTag={setActiveTag} />
       <PanelLeftButtons />
-      <ImageSlider
-        image={activeElement.image}
-        name={activeElement.name}
-        price={activeElement.price}
-      />
+      <ImageSlider image={activeElement.image} />
       <Promo price={activeElement.price} priceOld={activeElement.priceOld} />
-      <Badge name={activeElement.name} {...activeElement} />
-      <BottomSlider
-        filterFeatured={filterFeatured}
-        filterSaleOff={filterSaleOff}
-        filterTopSeller={filterTopSeller}
-        filterTopRated={filterTopRated}
-        activeElement={activeElement}
-        setActiveElement={setActiveElement}
-        isFeatured={isFeatured}
-        isTopRated={isTopRated}
-        isTopSeller={isTopSeller}
-        isSaleOff={isSaleOff}
+      <Badge
+        id={activeElement.id}
+        name={activeElement.name}
+        stars={activeElement.stars}
+        userRating={activeElement.userRating}
       />
+      <BottomSlider activeItems={activeItems} setActiveIndex={setActiveIndex} />
     </div>
   );
 };
