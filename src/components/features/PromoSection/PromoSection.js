@@ -7,7 +7,7 @@ const PromoSection = () => {
   return (
     <div className='container'>
       <div className='row'>
-        <div className='d-none d-md-flex col-4'>
+        <div className='d-none d-md-block col-4'>
           <HotDeals />
         </div>
         <div className='col-md-8'>
