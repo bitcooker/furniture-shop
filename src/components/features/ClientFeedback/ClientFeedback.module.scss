@@ -31,39 +31,6 @@
       }
     }
 
-    .dots {
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      ul {
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        background-color: $newFurniture-dots-ul-bg;
-        transform: translateY(15px);
-
-        li {
-          display: inline-block;
-          margin-left: 0.5rem;
-
-          a {
-            display: block;
-            width: 13px;
-            height: 13px;
-            border-radius: 6px;
-            background-color: $newFurniture-dots-bg;
-            font-size: 0;
-
-            &.active,
-            &:hover {
-              @include bg-hover-animation;
-              background-color: $newFurniture-active-dots-bg;
-            }
-          }
-        }
-      }
-    }
   }
   .feedback {
     text-align: center;

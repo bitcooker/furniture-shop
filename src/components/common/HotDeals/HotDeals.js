@@ -4,6 +4,7 @@ import styles from './HotDeals.module.scss';
 import { useSelector } from 'react-redux';
 import { getDiscountedProducts } from '../../../redux/productsRedux';
 import ProductBoxTemplate from '../ProductBoxTemplate/ProductBoxTemplate';
+import Dots from '../Dot/Dots';
 
 const HotDeals = () => {
   const discountedProducts = useSelector(getDiscountedProducts);
@@ -60,27 +61,15 @@ const HotDeals = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeProduct]);
 
-  const dots = [];
-  for (let i = 0; i < productCount; i++) {
-    dots.push(
-      <li>
-        <a
-          onClick={() => handleOnClick(i)}
-          className={i === activeProduct && styles.active}
-        >
-          discountedProducts {i}
-        </a>
-      </li>
-    );
-  }
-
   return (
     <div className={styles.root}>
       <div className={styles.header}>
         <div>HOT DEALS</div>
-        <div className={'col-auto ' + styles.dots}>
-          <ul>{dots}</ul>
-        </div>
+        <Dots
+          changeEvent={handleOnClick}
+          activeNumber={activeProduct}
+          dotsNumber={productCount}
+        />
       </div>
       <div className={animation ? styles.fadeOut : styles.fadeIn}>
         {discountedProducts.slice(activeProduct * 1, activeProduct + 1).map(item => (

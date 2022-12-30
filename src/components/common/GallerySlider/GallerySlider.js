@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './GallerySlider.module.scss';
-import { useSelector } from 'react-redux';
-import { getAll } from '../../../redux/productsRedux';
 import PanelLeftButtons from './PanelLeftButtons/PanelLeftButtons';
-import Slider from './Slider/Slider';
+import BottomSlider from './BottomSlider/BottomSlider';
 import Badge from './Badge/Badge';
 import PanelTopButtons from './PanelTopButtons/PanelTopButtons';
 import Promo from './Promo/Promo';
 import ImageSlider from './ImageSlider/ImageSlider';
+import { useSelector } from 'react-redux';
+import { getProductByTags } from '../../../redux/productsRedux';
+import { TAGS } from '../../../redux/initialState';
 
 const GallerySlider = () => {
-  const topSeller = useSelector(getAll);
+  const [activeTag, setActiveTag] = useState(TAGS.FEATURED);
+
+  const activeItems = useSelector(state => getProductByTags(state, activeTag));
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeElement = activeItems[activeIndex];
 
   return (
     <div className={styles.root}>
-      <PanelTopButtons />
+      <PanelTopButtons activeTag={activeTag} setActiveTag={setActiveTag} />
       <PanelLeftButtons />
-      <ImageSlider topSeller={topSeller} />
-      <Promo topSeller={topSeller} />
-      <Badge topSeller={topSeller} />
-      <Slider topSeller={topSeller} />
+      <ImageSlider image={activeElement.image} />
+      <Promo price={activeElement.price} priceOld={activeElement.priceOld} />
+      <Badge
+        id={activeElement.id}
+        name={activeElement.name}
+        stars={activeElement.stars}
+        userRating={activeElement.userRating}
+      />
+      <BottomSlider activeItems={activeItems} setActiveIndex={setActiveIndex} />
     </div>
   );
 };

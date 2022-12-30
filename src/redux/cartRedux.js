@@ -8,10 +8,12 @@ const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
 const ADD_PRODUCT = createActionName('ADD_PRODUCT');
+const DELETE_PRODUCT = createActionName('DELETE_PRODUCT');
 const EDIT_PRODUCT = createActionName('EDIT_PRODUCT');
 
 /* action creators */
 export const addCartProduct = payload => ({ payload, type: ADD_PRODUCT });
+export const deleteCartProduct = payload => ({ payload, type: DELETE_PRODUCT });
 export const editCartProduct = payload => ({ payload, type: EDIT_PRODUCT });
 
 /* reducer */
@@ -21,6 +23,13 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         products: [...statePart.products, action.payload],
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...statePart,
+        products: statePart.products.filter(
+          product => product.id !== action.payload.id
+        ),
       };
     case EDIT_PRODUCT:
       return {

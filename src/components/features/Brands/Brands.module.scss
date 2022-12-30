@@ -1,3 +1,5 @@
+@import "../../../styles/settings.scss";
+
 .brands {
   display: flex;
   text-align: center;
@@ -13,7 +15,18 @@
   justify-content: center;
   padding: 17px 0;
 }
+.arrow:hover {
+  background-color: $primary;
+  cursor: pointer;
+}
 
 .image {
   width: 100%;
+}
+.fadeIn {
+  @include fadeIn;
+}
+
+.fadeOut {
+  @include fadeOut;
 }
