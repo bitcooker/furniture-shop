@@ -43,7 +43,6 @@ const SingleProduct = ({
             <div className={styles.prices}>
               <h5>${price}</h5>
               <h5>
-                {' '}
                 {priceOld && (
                   <s className='my-auto mx-2'>
                     <span className='text-muted'>${priceOld}</span>
