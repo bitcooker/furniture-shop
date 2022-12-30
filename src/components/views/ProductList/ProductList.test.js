@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProductList from './ProductList';
-
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
