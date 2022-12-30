@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
@@ -20,27 +21,51 @@ const MenuBar = ({ children }) => (
       <div className={'col-auto ' + styles.menu}>
         <ul>
           <li>
-            <a href='#' className={styles.active}>
+            <NavLink to={`/`} exact className={state => state && `${styles.active}`}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Furniture</a>
+            <NavLink
+              to={`/shop/furniture`}
+              className={state => state && `${styles.active}`}
+            >
+              Furniture
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Chair</a>
+            <NavLink
+              to={`/shop/chair`}
+              className={state => state && `${styles.active}`}
+            >
+              Chair
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Table</a>
+            <NavLink
+              to={`/shop/table`}
+              className={state => state && `${styles.active}`}
+            >
+              Table
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Sofa</a>
+            <NavLink to={`/shop/sofa`} className={state => state && `${styles.active}`}>
+              Sofa
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Bedroom</a>
+            <NavLink
+              to={`/shop/bedroom`}
+              className={state => state && `${styles.active}`}
+            >
+              Bedroom
+            </NavLink>
           </li>
           <li>
-            <a href='#'>Blog</a>
+            <NavLink to={`/blog`} className={state => state && `${styles.active}`}>
+              Blog
+            </NavLink>
           </li>
         </ul>
       </div>
