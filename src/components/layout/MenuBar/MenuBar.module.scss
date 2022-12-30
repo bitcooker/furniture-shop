@@ -54,7 +54,6 @@
 
       &:hover,
       &.active {
-        @include bg-hover-animation;
         background-color: $menuBar-bg-hover;
         color: $menuBar-text-color-hover;
         border-color: $menuBar-border-color-hover;
@@ -64,7 +63,6 @@
         border-color: $menuBar-border-color-active;
       }
     }
-
   }
 
   .icon {
@@ -92,7 +90,7 @@
       place-content: center;
     }
 
-    .icon:hover+.menu {
+    .icon:hover + .menu {
       @include menu-bar-menu-small;
     }
 
@@ -116,10 +114,10 @@
   }
 
   @include for-tablet {
-            .container {
-             grid-template-columns: 1fr;
-             place-items: center;
-             align-items: center;
-           }
+    .container {
+      grid-template-columns: 1fr;
+      place-items: center;
+      align-items: center;
+    }
   }
 }
