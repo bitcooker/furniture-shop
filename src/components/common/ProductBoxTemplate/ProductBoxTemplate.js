@@ -11,12 +11,19 @@ import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
 import { useProductsAction } from '../../../hooks/use-Product-action';
 
-const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
+const ProductBoxTemplate = ({
+  hotDeals,
+  newFurniture,
+  isCompared,
+  id,
+  isFavorite,
+  ...props
+}) => {
   const [isShown, setIsShown] = useState(false);
   const { favoriteAction, addToCompare } = useProductsAction();
   const product = {
-    id: props.id,
-    isFavorite: props.isFavorite,
+    id: id,
+    isFavorite: isFavorite,
     isCompared: isCompared,
   };
 
@@ -50,22 +57,18 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
               isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
             }
           >
-            <NewFurnitureProductButtons id={props.id} />
+            <NewFurnitureProductButtons id={id} />
           </div>
         )}
         {hotDeals && (
           <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
-            <HotDealsIcons id={props.id} />
+            <HotDealsIcons id={id} />
           </div>
         )}
       </div>
       <div className={styles.content}>
         <h5>{props.name}</h5>
-        <ProductRating
-          id={props.id}
-          stars={props.stars}
-          userRating={props.userRating}
-        />
+        <ProductRating id={id} stars={props.stars} userRating={props.userRating} />
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
@@ -73,7 +76,7 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
           <Button
             variant='outline'
             onClick={favoriteChangeHandler}
-            className={props.isFavorite ? `${styles.favoriteActive}` : null}
+            className={isFavorite ? `${styles.favoriteActive}` : null}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
