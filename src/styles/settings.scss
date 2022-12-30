@@ -109,7 +109,7 @@ $header-topbar-bg: #434343;
 $header-bg: #363636;
 
 //GallerySlider
-$gallerySlider-topBtn-color:$color-grey-165;
+$gallerySlider-topBtn-color: $color-grey-165;
 $gallerySlider-topBtn-bg: $white;
 $gallerySlider-topBtn-border: $color-grey-890;
 $gallerySlider-tooltiptext-bg: $color-grey-165;
@@ -125,11 +125,11 @@ $gallerySlider-slider-arrow-color: $white;
 //Gallery
 $gallery-border-color: $color-grey-890;
 $gallery-border-color-active: $primary;
-$gallery-title-color:$primary;
-$gallery-secondary-text-color:#79ae30;
-$gallery-main-text-color:#d58e32;
-$gallery-btn-right-color:$white;
-$gallery-btn-right-bg:#79ae30;
+$gallery-title-color: $primary;
+$gallery-secondary-text-color: #79ae30;
+$gallery-main-text-color: #d58e32;
+$gallery-btn-right-color: $white;
+$gallery-btn-right-bg: #79ae30;
 
 //OTHER SETTINGS
 $base-padding: 24px;
@@ -156,11 +156,11 @@ $transition-delay-bg: 150ms;
 //FadeAnimation
 $opacity-small: 0.2;
 $opacity-big: 1;
-$animation-duration: 0.4s;
+$fade-duration: 0.4s;
 
 @mixin fadeIn {
   animation-name: fadeIn;
-  animation-duration: $animation-duration;
+  animation-duration: $fade-duration;
   @keyframes fadeIn {
     from {
       opacity: $opacity-small;
@@ -173,13 +173,49 @@ $animation-duration: 0.4s;
 
 @mixin fadeOut {
   animation-name: fadeOut;
-  animation-duration: $animation-duration;
+  animation-duration: $fade-duration;
   @keyframes fadeOut {
     from {
       opacity: $opacity-big;
     }
     to {
       opacity: $opacity-small;
+    }
+  }
+}
+
+//Cart animation
+$slide-duration: 0.8s;
+$opacity-none: 0;
+$position-start: 15%;
+$position-end: 20%;
+
+@mixin slideIn {
+  animation-name: slideIn;
+  animation-duration: $slide-duration;
+  @keyframes slideIn {
+    0% {
+      top: $position-start;
+      opacity: $opacity-small;
+    }
+    100% {
+      top: $position-end;
+      opacity: $opacity-big;
+    }
+  }
+}
+
+@mixin slideOut {
+  animation-name: slideOut;
+  animation-duration: $slide-duration;
+  @keyframes slideOut {
+    0% {
+      top: $position-end;
+      opacity: $opacity-big;
+    }
+    100% {
+      top: $position-start;
+      opacity: $opacity-none;
     }
   }
 }

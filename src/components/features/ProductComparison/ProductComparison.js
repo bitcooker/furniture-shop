@@ -9,6 +9,8 @@ import Product from './Product';
 
 import styles from './ProductComparison.module.scss';
 
+import Dots from '../../common/Dot/Dots';
+
 const ProductComparison = () => {
   const products = useSelector(state => getComparedProducts(state));
 

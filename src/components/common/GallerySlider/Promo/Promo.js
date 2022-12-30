@@ -15,7 +15,7 @@ const Promo = ({ topSeller }) => {
 };
 
 Promo.propTypes = {
-  topSeller: PropTypes.node,
+  topSeller: PropTypes.object,
 };
 
 export default Promo;

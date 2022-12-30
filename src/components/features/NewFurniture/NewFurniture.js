@@ -6,19 +6,40 @@ import { RWD_MODES } from '../../../redux/initialState';
 import styles from './NewFurniture.module.scss';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import ProductBoxTemplate from '../../common/ProductBoxTemplate/ProductBoxTemplate';
+import Dots from '../../common/Dot/Dots';
 
 class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    newFurnitureAnimation: false,
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    const animationTime = 250; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        newFurnitureAnimation: false,
+        activePage: newPage,
+      });
+    }, animationTime);
   }
 
-  handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+  handleCategoryChange(newCategory, productsRef) {
+    const animationTime = 350; // in ms
+
+    this.setState({ newFurnitureAnimation: true });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        newFurnitureAnimation: false,
+        activePage: 0,
+      });
+    }, animationTime);
   }
 
   getDisplayedProductsCount(rwdMode) {
@@ -68,26 +89,26 @@ class NewFurniture extends React.Component {
   }
 
   render() {
+    const { activeCategory, activePage, newFurnitureAnimation } = this.state;
     const { categories, products, rwdMode } = this.props;
-    const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
 
-    const dots = [];
-    for (let i = 0; i < this.getDots(categoryProducts, rwdMode); i++) {
-      dots.push(
-        <li>
-          <a
-            onChange={() => this.handlePageChange(i)}
-            onClick={() => this.handlePageChange(i)}
-            className={i === activePage && styles.active}
-          >
-            page {i}
-          </a>
-        </li>
-      );
-    }
+    this.productsRef = React.createRef();
+
+    const changePage = pageNumber => {
+      const animationTime = 250; // in ms
+
+      this.setState({ newFurnitureAnimation: true });
+
+      setTimeout(() => {
+        this.setState({
+          newFurnitureAnimation: false,
+          activePage: pageNumber,
+        });
+      }, animationTime);
+    };
 
     return (
       <div className={styles.root}>
@@ -103,7 +124,9 @@ class NewFurniture extends React.Component {
                     <li key={item.id}>
                       <a
                         className={item.id === activeCategory && styles.active}
-                        onClick={() => this.handleCategoryChange(item.id)}
+                        onClick={() =>
+                          this.handleCategoryChange(item.id, this.productsRef)
+                        }
                       >
                         {item.name}
                       </a>
@@ -111,8 +134,12 @@ class NewFurniture extends React.Component {
                   ))}
                 </ul>
               </div>
-              <div className={'col-auto ' + styles.dots}>
-                <ul>{dots}</ul>
+              <div className={styles.dotsContainer}>
+                <Dots
+                  changeEvent={changePage}
+                  activeNumber={activePage}
+                  dotsNumber={this.getDots(categoryProducts, rwdMode)}
+                />
               </div>
             </div>
           </div>
@@ -126,7 +153,11 @@ class NewFurniture extends React.Component {
               activePage > 0 ? () => this.handlePageChange(activePage - 1) : undefined
             }
           >
-            <div className='row'>
+            <div
+              className={`row ${styles.products} ${
+                newFurnitureAnimation ? styles.fadeOut : styles.fadeIn
+              }`}
+            >
               {this.getProducts(categoryProducts, activePage, rwdMode)}
             </div>
           </Swipeable>

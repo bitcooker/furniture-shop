@@ -1,0 +1,30 @@
+@import "../../../styles/settings.scss";
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cartItem {
+  list-style: none;
+  line-height: 50px;
+}
+.input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  &:focus {
+    outline: none;
+    border: 2px solid $primary;
+  }
+}
+
+.icon {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.line {
+  border-bottom: 1px solid $productBox-line-border-color;
+  width: 420px;
+}

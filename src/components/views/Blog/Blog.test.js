@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductList from './ProductList';
+import Blog from './Blog';
 
-describe('ProductList', () => {
+describe('Blog', () => {
   it('renders without crashing', () => {
-    shallow(<ProductList />);
+    shallow(<Blog />);
   });
 });

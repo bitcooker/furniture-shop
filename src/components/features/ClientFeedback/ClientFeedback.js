@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import styles from './ClientFeedback.module.scss';
 import { getFeedback } from '../../../redux/feedbackRedux';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import Dots from '../../common/Dot/Dots';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
@@ -17,20 +18,6 @@ const ClientFeedback = () => {
   };
 
   const feedbackCount = feedback.length;
-
-  const dots = [];
-  for (let i = 0; i < feedbackCount; i++) {
-    dots.push(
-      <li>
-        <a
-          onClick={() => handleFeedbackChange(i)}
-          className={i === activeFeedback && styles.active}
-        >
-          feedback {i}
-        </a>
-      </li>
-    );
-  }
 
   const swipeLeftHandler = () => {
     if (activeFeedback < feedback.length - 1)
@@ -48,9 +35,11 @@ const ClientFeedback = () => {
             <div className={'col ' + styles.heading}>
               <h3>Client feedback</h3>
             </div>
-            <div className={'col-auto ' + styles.dots}>
-              <ul>{dots}</ul>
-            </div>
+            <Dots
+              changeEvent={handleFeedbackChange}
+              activeNumber={activeFeedback}
+              dotsNumber={feedbackCount}
+            />
           </div>
         </div>
         <Swipeable leftAction={swipeLeftHandler} rightAction={swipeRightHandler}>
