@@ -16,8 +16,19 @@
     font-weight: 600;
     font-family: "Poppins";
     font-size: 18px;
+    cursor: pointer;
 
-    a {
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
         text-decoration: none;
         color: $gallerySlider-topBtn-color;
         flex-grow: 1;

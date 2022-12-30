@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './BottomSlider.module.scss';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import './ReactSlick.css';
 
-const BottomSlider = ({ topSeller, setActiveElement }) => {
+const BottomSlider = ({ setActiveIndex, activeItems }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -58,23 +58,22 @@ const BottomSlider = ({ topSeller, setActiveElement }) => {
       },
     ],
   };
-
-  const handleActivePhoto = item => {
-    setActiveElement(item);
+  const handleActivePhoto = index => {
+    setActiveIndex(index);
   };
 
   return (
     <div className='gallerySlider'>
       <div className={styles.slider}>
         <Slider {...settings}>
-          {topSeller.slice(0, 14).map(item => (
+          {activeItems.map((item, index) => (
             <img
               className={styles.product}
               key={item.image}
               src={`${process.env.PUBLIC_URL}/images/products/${item.image}`}
               alt='furniture'
               data-image={item.image}
-              onClick={() => handleActivePhoto(item)}
+              onClick={() => handleActivePhoto(index)}
             />
           ))}
         </Slider>
@@ -84,7 +83,7 @@ const BottomSlider = ({ topSeller, setActiveElement }) => {
 };
 
 BottomSlider.propTypes = {
-  topSeller: PropTypes.node,
-  setActiveElement: PropTypes.node,
+  setActiveIndex: PropTypes.func,
+  activeItems: PropTypes.arrayOf(PropTypes.object),
 };
 export default BottomSlider;
