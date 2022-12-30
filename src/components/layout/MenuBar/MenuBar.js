@@ -7,46 +7,32 @@ import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import ProductSearch from '../../features/ProductSearch/ProductSearch';
 
 import styles from './MenuBar.module.scss';
+import { NavLink } from 'react-router-dom';
 
-const MenuBar = ({ children }) => (
-  <div className={styles.root}>
-    <div className={styles.container}>
-      <div>
-        <ProductSearch />
-      </div>
-      <div className={styles.icon}>
-        <FontAwesomeIcon className={styles.icon} icon={faListUl} />
-      </div>
-      <div className={'col-auto ' + styles.menu}>
-        <ul>
-          <li>
-            <a href='#' className={styles.active}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href='#'>Furniture</a>
-          </li>
-          <li>
-            <a href='#'>Chair</a>
-          </li>
-          <li>
-            <a href='#'>Table</a>
-          </li>
-          <li>
-            <a href='#'>Sofa</a>
-          </li>
-          <li>
-            <a href='#'>Bedroom</a>
-          </li>
-          <li>
-            <a href='#'>Blog</a>
-          </li>
-        </ul>
+const MenuBar = ({ children }) => {
+  return (
+    <div className={styles.root}>
+      <div className={styles.container}>
+        <div>
+          <ProductSearch />
+        </div>
+        <div className={styles.icon}>
+          <FontAwesomeIcon className={styles.icon} icon={faListUl} />
+        </div>
+        <div className={'col-auto ' + styles.menu}>
+          <ul>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/shop/furniture'>Furniture</NavLink>
+            <NavLink to='/shop/chair'>Chair</NavLink>
+            <NavLink to='/shop/table'>Table</NavLink>
+            <NavLink to='/shop/bedroom'>Bedroom</NavLink>
+            <NavLink to='/'>Blog</NavLink>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 MenuBar.propTypes = {
   children: PropTypes.node,

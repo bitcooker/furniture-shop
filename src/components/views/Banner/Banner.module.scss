@@ -1,0 +1,12 @@
+@import "../../../styles/settings.scss";
+
+.banner {
+  background-color:$menuBar-text-color;
+  color: white;
+  height:198px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: uppercase;
+}
