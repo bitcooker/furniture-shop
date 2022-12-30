@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './BottomSlider.module.scss';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
@@ -83,7 +83,7 @@ const BottomSlider = ({ setActiveIndex, activeItems }) => {
 };
 
 BottomSlider.propTypes = {
-  setActiveIndex: PropTypes.node,
-  activeItems: PropTypes.node,
+  setActiveIndex: PropTypes.func,
+  activeItems: PropTypes.arrayOf(PropTypes.object),
 };
 export default BottomSlider;

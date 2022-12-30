@@ -4,6 +4,13 @@ export const RWD_MODES = {
   MOBILE: `mobile`,
 };
 
+export const TAGS = {
+  SALE_OFF: 'Sale Off',
+  TOP_RATED: 'Top Rated',
+  FEATURED: 'Featured',
+  TOP_SELLER: 'Top Seller',
+};
+
 const initialState = {
   categories: [
     { id: 'bed', name: 'Bed' },
@@ -86,7 +93,7 @@ const initialState = {
       newFurniture: true,
       isFavorite: false,
       isCompared: false,
-      tags: ['Top Seller', 'Top Rated'],
+      tags: ['Top Seller', 'Top Rated', 'Featured'],
     },
     {
       id: 'aenean-ru-bristique-6',

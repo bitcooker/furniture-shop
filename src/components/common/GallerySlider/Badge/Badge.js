@@ -17,7 +17,7 @@ const Badge = ({ name, id, stars, userRating }) => {
 Badge.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
-  userRating: PropTypes.node,
+  userRating: PropTypes.number,
   stars: PropTypes.number,
 };
 

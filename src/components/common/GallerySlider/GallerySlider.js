@@ -8,9 +8,10 @@ import Promo from './Promo/Promo';
 import ImageSlider from './ImageSlider/ImageSlider';
 import { useSelector } from 'react-redux';
 import { getProductByTags } from '../../../redux/productsRedux';
+import { TAGS } from '../../../redux/initialState';
 
 const GallerySlider = () => {
-  const [activeTag, setActiveTag] = useState('Sale Off');
+  const [activeTag, setActiveTag] = useState(TAGS.FEATURED);
 
   const activeItems = useSelector(state => getProductByTags(state, activeTag));
 

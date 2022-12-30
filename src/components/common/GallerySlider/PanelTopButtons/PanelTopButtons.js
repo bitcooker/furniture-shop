@@ -31,8 +31,8 @@ const PanelTopButtons = ({ activeTag, setActiveTag }) => {
 };
 
 PanelTopButtons.propTypes = {
-  activeTag: PropTypes.node,
-  setActiveTag: PropTypes.node,
+  activeTag: PropTypes.string,
+  setActiveTag: PropTypes.func,
 };
 
 export default PanelTopButtons;
