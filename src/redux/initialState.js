@@ -32,6 +32,7 @@ const initialState = {
       category: 'bed',
       image: 'bed_1.jpg',
       price: 30,
+      priceOld: 50,
       stars: 2,
       userRating: 4,
       promo: 'sale',
@@ -46,6 +47,7 @@ const initialState = {
       category: 'bed',
       image: 'bed_2.jpg',
       price: 30,
+      priceOld: 50,
       stars: 2,
       promo: 'sale',
       userRating: 3,
@@ -88,6 +90,7 @@ const initialState = {
       category: 'bed',
       image: 'bed_5.jpg',
       price: 30,
+      priceOld: 40,
       stars: 2,
       promo: 'sale',
       newFurniture: true,
@@ -98,7 +101,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-6',
       name: 'Aenean Ru Bristique 6',
-      category: 'bed',
+      category: 'bedroom',
       image: 'bed_6.jpg',
       price: 30,
       priceOld: 50,
@@ -141,6 +144,7 @@ const initialState = {
       category: 'bed',
       image: 'bed_9.jpg',
       price: 30,
+      priceOld: 35,
       stars: 2,
       promo: 'sale',
       newFurniture: true,
@@ -151,7 +155,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-10',
       name: 'Aenean Ru Bristique 10',
-      category: 'bed',
+      category: 'bedroom',
       image: 'bed_10.jpg',
       price: 30,
       stars: 2,
@@ -164,7 +168,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-11',
       name: 'Aenean Ru Bristique 11',
-      category: 'bed',
+      category: 'chair',
       image: 'bed_11.jpg',
       price: 30,
       priceOld: 50,
@@ -178,7 +182,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-12',
       name: 'Aenean Ru Bristique 12',
-      category: 'bed',
+      category: 'bedroom',
       image: 'bed_12.jpg',
       price: 30,
       stars: 2,
@@ -191,7 +195,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-13',
       name: 'Aenean Ru Bristique 13',
-      category: 'bed',
+      category: 'chair',
       image: 'bed_13.jpg',
       price: 30,
       stars: 2,
@@ -204,7 +208,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-14',
       name: 'Aenean Ru Bristique 14',
-      category: 'bed',
+      category: 'bedroom',
       image: 'chair_1.jpg',
       price: 30,
       stars: 2,
@@ -230,7 +234,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-16',
       name: 'Aenean Ru Bristique 16',
-      category: 'bed',
+      category: 'table',
       image: 'chair_3.jpg',
       price: 30,
       stars: 2,
@@ -243,7 +247,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-17',
       name: 'Aenean Ru Bristique 17',
-      category: 'bed',
+      category: 'bedroom',
       image: 'chair_4.jpg',
       price: 30,
       stars: 2,
@@ -256,7 +260,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-18',
       name: 'Aenean Ru Bristique 18',
-      category: 'bed',
+      category: 'table',
       image: 'chair_5.jpg',
       price: 30,
       stars: 2,
@@ -269,7 +273,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-19',
       name: 'Aenean Ru Bristique 19',
-      category: 'bed',
+      category: 'table',
       image: 'chair_6.jpg',
       price: 30,
       stars: 2,
@@ -425,7 +429,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-31',
       name: 'Aenean Ru Bristique 31',
-      category: 'sofa',
+      category: 'furniture',
       image: 'chair_9.jpg',
       price: 30,
       stars: 2,
@@ -438,7 +442,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-32',
       name: 'Aenean Ru Bristique 32',
-      category: 'table',
+      category: 'furniture',
       image: 'chair_5.jpg',
       price: 30,
       stars: 2,
@@ -451,7 +455,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-33',
       name: 'Aenean Ru Bristique 33',
-      category: 'table',
+      category: 'furniture',
       image: 'chair_9.jpg',
       price: 30,
       stars: 2,
@@ -464,7 +468,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-34',
       name: 'Aenean Ru Bristique 34',
-      category: 'dining',
+      category: 'furniture',
       image: 'chair_2.jpg',
       price: 30,
       stars: 2,
@@ -478,7 +482,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-35',
       name: 'Aenean Ru Bristique 35',
-      category: 'dining',
+      category: 'sofa',
       image: 'chair_3.jpg',
       price: 30,
       stars: 2,
@@ -492,7 +496,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-36',
       name: 'Aenean Ru Bristique 36',
-      category: 'dining',
+      category: 'sofa',
       image: 'chair_7.jpg',
       price: 30,
       stars: 2,
@@ -506,7 +510,7 @@ const initialState = {
     {
       id: 'aenean-ru-bristique-37',
       name: 'Aenean Ru Bristique 37',
-      category: 'dining',
+      category: 'sofa',
       image: 'chair_8.jpg',
       price: 30,
       stars: 2,

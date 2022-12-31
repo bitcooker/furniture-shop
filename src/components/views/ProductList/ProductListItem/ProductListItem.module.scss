@@ -1,0 +1,89 @@
+@import '../../../../styles/settings.scss';
+
+
+.wrapper {
+
+   border-bottom: 2px solid $color-grey-890;
+   margin-bottom: 30px;
+   color: $color-grey-165;
+
+  .photo {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    max-width: 261px;
+
+    span {
+      position: absolute;
+      top: -26px ;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-grey-165;
+      color: $white;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+
+      p {
+        position: absolute;
+        top: 26px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+      }
+
+    }
+  }
+
+  .description {
+
+    h4 {
+      font-size: 16px;
+      color: $primary;
+    }
+    p {
+      border-bottom: 2px solid $menuBar-text-color;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: "Poppins";
+      color: #676767;
+
+
+    }
+    .prices {
+      display: flex;
+      color:$menuBar-text-color ;
+      font-size: 18px;
+      font-weight: 600;
+
+    }
+
+    .buttons {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 24px;
+
+      .button {
+        background-color: $color-grey-165;
+        color: white;
+        text-decoration: none;
+      }
+
+      .active {
+        background-color: $primary;
+        color: white;
+        text-decoration: none;
+        border-color: $primary;
+      }
+    }
+  }
+  .image {
+        object-fit: cover;
+        width: 100%;
+        height: 263px;
+    }
+}
+
