@@ -9,6 +9,7 @@ import {
   getSortByA_Z,
   getSortLowPrice,
 } from '../../../redux/productsRedux';
+import Button from '../../common/Button/Button';
 import Banner from '../Banner/Banner';
 import styles from './ProductList.module.scss';
 import ProductListItem from './ProductListItem/ProductListItem';
@@ -22,9 +23,9 @@ const ProductList = () => {
   const SORT_Z_A = useSelector(getSortByZ_A);
   const SORT_A_Z = useSelector(getSortByA_Z);
 
-  const [counter, setCounter] = useState(24);
+  const [counter, setCounter] = useState(6);
   const [renderAllProducts, setActiveAllProducts] = useState(LOW_PRICE);
-
+  const [isShown, setIsShown] = useState(false);
   const handleCounter = value => {
     setCounter(value);
   };
@@ -74,11 +75,11 @@ const ProductList = () => {
                   <label>
                     Show
                     <select>
-                      <option value='6'>6</option>
-                      <option value='12'>12</option>
-                      <option selected value='24'>
-                        24
+                      <option selected value='6'>
+                        6
                       </option>
+                      <option value='12'>12</option>
+                      <option value='24'>24</option>
                     </select>
                   </label>
                 </form>
@@ -100,6 +101,16 @@ const ProductList = () => {
                   />
                 )
             )}
+            <div className={styles.loadMore}>
+              <Button
+                className={isShown ? styles.active : styles.button}
+                onClick={() => handleCounter(allProducts.length)}
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)}
+              >
+                LOAD MORE
+              </Button>
+            </div>
           </div>
           <div className='col-3'>
             <h5>Filter by categories</h5>

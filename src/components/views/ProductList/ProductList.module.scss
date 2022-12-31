@@ -47,7 +47,30 @@
     h4 {
       margin-top: 30px;
 
+    }
   }
+  .loadMore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+
+    .button {
+      background-color: $color-grey-165;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+    }
+
+    .active {
+      background-color: $primary;
+      color: white;
+      text-decoration: none;
+      border-color: $primary;
+      padding: 10px 20px;
+    }
+
   }
 }
 
