@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './SingleProduct.module.scss';
+import styles from './ProductListItem.module.scss';
 import PropTypes from 'prop-types';
 import ProductRating from '../../../common/ProductRating/ProductRating';
 import Button from '../../../common/Button/Button';
@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faHeart } from '@fortawesome/free-regular-svg-icons';
 
-const SingleProduct = ({
+const ProductListItem = ({
   image,
   category,
   price,
@@ -50,7 +50,7 @@ const SingleProduct = ({
                 )}
               </h5>
             </div>
-            <ProductRating />
+            <ProductRating id={id} stars={stars} userRating={userRating} />
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
               doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
@@ -82,15 +82,15 @@ const SingleProduct = ({
   );
 };
 
-SingleProduct.propTypes = {
-  image: PropTypes.node,
+ProductListItem.propTypes = {
+  image: PropTypes.string,
   category: PropTypes.string,
-  name: PropTypes.node,
+  name: PropTypes.string,
   price: PropTypes.number,
   priceOld: PropTypes.number,
-  id: PropTypes.node,
+  id: PropTypes.string,
   userRating: PropTypes.number,
   stars: PropTypes.number,
 };
 
-export default SingleProduct;
+export default ProductListItem;
