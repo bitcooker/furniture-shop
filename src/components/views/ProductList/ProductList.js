@@ -104,7 +104,7 @@ const ProductList = () => {
             <div className={styles.loadMore}>
               <Button
                 className={isShown ? styles.active : styles.button}
-                onClick={() => handleCounter(allProducts.length)}
+                onClick={() => handleCounter(counter + counter)}
                 onMouseEnter={() => setIsShown(true)}
                 onMouseLeave={() => setIsShown(false)}
               >
