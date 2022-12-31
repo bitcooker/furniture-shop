@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getAll } from '../../../redux/productsRedux';
+import Filters from '../../common/Filters/Filters';
 import Banner from '../Banner/Banner';
 import styles from './ProductList.module.scss';
 import ProductListItem from './ProductListItem/ProductListItem';
@@ -75,7 +76,7 @@ const ProductList = () => {
             )}
           </div>
           <div className='col-3'>
-            <h5>Filter by categories</h5>
+            <Filters />
           </div>
         </div>
       </div>
