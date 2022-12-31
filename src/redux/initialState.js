@@ -605,6 +605,26 @@ const initialState = {
       photo: '3.png',
     },
   ],
+  currency: [
+    {
+      id: 'USD',
+      sign: '$',
+      rate: 1,
+      isSelected: true,
+    },
+    {
+      id: 'EUR',
+      sign: '€',
+      rate: 0.94,
+      isSelected: false,
+    },
+    {
+      id: 'PLN',
+      sign: 'zł',
+      rate: 4.4,
+      isSelected: false,
+    },
+  ],
 };
 
 export default initialState;
