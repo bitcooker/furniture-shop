@@ -8,6 +8,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import ProductRating from '../ProductRating/ProductRating';
 import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
+import { useShowPrice } from '../../../hooks/price-hook';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
 import { useProductsAction } from '../../../hooks/use-Product-action';
 
@@ -19,6 +20,9 @@ const ProductBoxTemplate = ({
   isFavorite,
   ...props
 }) => {
+  const priceToDisplay = useShowPrice(props.price);
+  const priceOldToDisplay = useShowPrice(props.priceOld);
+
   const [isShown, setIsShown] = useState(false);
   const { favoriteAction, addToCompare } = useProductsAction();
   const product = {
@@ -91,11 +95,11 @@ const ProductBoxTemplate = ({
         <div className={styles.price}>
           {props.priceOld && (
             <s className='my-auto mx-2'>
-              <span className='text-muted'>${props.priceOld}</span>
+              <span className='text-muted'>{priceOldToDisplay}</span>
             </s>
           )}
           <Button className={isShown ? styles.isShownPrice : undefined} variant='small'>
-            $ {props.price}
+            {priceToDisplay}
           </Button>
         </div>
       </div>

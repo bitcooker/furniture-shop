@@ -16,6 +16,7 @@
       a {
         color: $topBar-text-color;
         font-size: 13px;
+        padding: 20px 0;
 
         &:hover {
           @include text-hover-animation;
@@ -26,12 +27,37 @@
     }
   }
 
-  .iconLabel{
+  .iconLabel {
     margin: 0 5px;
   }
 
   .topOptions ul li {
     margin-right: 1.5rem;
+
+    .navItem:hover .navItemLinks {
+      @include fadeIn;
+      display: block;
+    }
+    .navItemLinks {
+      display: none;
+      position: absolute;
+      width: 80px;
+      left: 0px;
+      padding: 0px;
+      text-align: center;
+      background-color: $topBar-bg;
+      z-index: 1;
+      li {
+        color: $topBar-text-color;
+        font-size: 13px;
+        &:hover {
+          @include text-hover-animation;
+          color: $topBar-text-color-active;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
 
     .icon {
       margin-left: 2px;
@@ -61,7 +87,6 @@
     }
 
     .topMenu {
-
       ul {
         padding: 0;
         margin: 0;
@@ -69,7 +94,7 @@
         display: flex;
         justify-content: flex-end;
 
-        li:last-of-type{
+        li:last-of-type {
           padding-right: 10px;
         }
       }

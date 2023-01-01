@@ -2,4 +2,53 @@
 
 .root {
   padding: $base-padding 0;
+
+  .greyLine {
+    background-color: $color-grey-890;
+    height: 48px;
+    padding-top: 13px;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #2a2a2a;
+    font-weight: 400;
+    font-family: "Poppins";
+    text-transform: uppercase;
+
+    span:last-child {
+      color: $primary;
+      font-weight: 400;
+    }
+  }
+
+  .sortLine {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 2px solid $menuBar-text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .sortLineRight {
+      margin-right: 10px;
+      display: flex;
+
+      label {
+        margin-right: 10px;
+      }
+
+      select {
+        margin-left: 10px;
+        background-color: $white;
+        border-color: #2a2a2a;
+      }
+
+    }
+
+
+    h4 {
+      margin-top: 30px;
+
+  }
+  }
 }
+

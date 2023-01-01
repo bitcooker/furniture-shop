@@ -8,6 +8,7 @@ import feedbackReducer from './feedbackRedux';
 import promoReducer from './promoRedux';
 import rwdReducer from './rwdModeRedux';
 import brandsReducer from './brandsRedux';
+import currencyReducer from './currencyRedux';
 import tagsReducer from './tagsRedux';
 
 // define reducers
@@ -19,6 +20,7 @@ const reducers = {
   promo: promoReducer,
   rwdMode: rwdReducer,
   brands: brandsReducer,
+  currency: currencyReducer,
   tags: tagsReducer,
 };
 
