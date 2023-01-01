@@ -2,12 +2,20 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../Button/Button';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useProductsAction } from '../../../../hooks/use-Product-action';
 import styles from './HotDealsIcons.module.scss';
 
-const HotDealsIcons = () => {
+const HotDealsIcons = props => {
+  const { cartAction } = useProductsAction();
+
+  const addToCart = e => {
+    e.preventDefault();
+    cartAction(props.id);
+  };
   return (
     <>
-      <Button variant='small'>
+      <Button variant='small' onClick={addToCart}>
         <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
       </Button>
       <div className={styles.clock}>
@@ -38,5 +46,8 @@ const HotDealsIcons = () => {
       </div>
     </>
   );
+};
+HotDealsIcons.propTypes = {
+  id: PropTypes.string,
 };
 export default HotDealsIcons;
