@@ -32,7 +32,7 @@ const Cart = () => {
           <div className={styles.cartIcon} onClick={show ? handleClose : handleOpen}>
             <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
           </div>
-          <div className={styles.cartCounter}>0</div>
+          <div className={styles.cartCounter}>{cartItems.length}</div>
         </a>
       </div>
 

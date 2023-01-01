@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { editProduct, getComparedProducts } from '../../../redux/productsRedux';
 import styles from './ProductBoxTemplate.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
@@ -12,37 +10,35 @@ import ProductRating from '../ProductRating/ProductRating';
 import HotDealsIcons from '../HotDeals/HotDealsIcons/HotDealsIcons';
 import { useShowPrice } from '../../../hooks/price-hook';
 import NewFurnitureProductButtons from '../../features/NewFurniture/NewFurnitureProductButtons/NewFurnitureProductButtons';
+import { useProductsAction } from '../../../hooks/use-Product-action';
 
-const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) => {
+const ProductBoxTemplate = ({
+  hotDeals,
+  newFurniture,
+  isCompared,
+  id,
+  isFavorite,
+  ...props
+}) => {
   const priceToDisplay = useShowPrice(props.price);
   const priceOldToDisplay = useShowPrice(props.priceOld);
 
   const [isShown, setIsShown] = useState(false);
-  const dispatch = useDispatch();
-
-  const products = useSelector(state => getComparedProducts(state));
+  const { favoriteAction, addToCompare } = useProductsAction();
+  const product = {
+    id: id,
+    isFavorite: isFavorite,
+    isCompared: isCompared,
+  };
 
   const favoriteChangeHandler = e => {
     e.preventDefault();
-    const payload = {
-      id: props.id,
-      isFavorite: !props.isFavorite,
-    };
-    dispatch(editProduct(payload));
+    favoriteAction(product);
   };
 
   const handleAddToCompare = e => {
     e.preventDefault();
-
-    const comparedProductNumberMoreThenFour = products.length > 3 ? true : false;
-
-    if (!comparedProductNumberMoreThenFour) {
-      const payload = {
-        id: props.id,
-        isCompared: !isCompared,
-      };
-      dispatch(editProduct(payload));
-    }
+    addToCompare(product);
   };
 
   return (
@@ -65,22 +61,18 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
               isShown ? styles.newFurnitureButtons : styles.newFurnitureButtonsHidden
             }
           >
-            <NewFurnitureProductButtons />
+            <NewFurnitureProductButtons id={id} />
           </div>
         )}
         {hotDeals && (
           <div className={isShown ? styles.hotDealsButton : styles.hotDealsHidden}>
-            <HotDealsIcons />
+            <HotDealsIcons id={id} />
           </div>
         )}
       </div>
       <div className={styles.content}>
         <h5>{props.name}</h5>
-        <ProductRating
-          id={props.id}
-          stars={props.stars}
-          userRating={props.userRating}
-        />
+        <ProductRating id={id} stars={props.stars} userRating={props.userRating} />
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
@@ -88,7 +80,7 @@ const ProductBoxTemplate = ({ hotDeals, newFurniture, isCompared, ...props }) =>
           <Button
             variant='outline'
             onClick={favoriteChangeHandler}
-            className={props.isFavorite ? `${styles.favoriteActive}` : null}
+            className={isFavorite ? `${styles.favoriteActive}` : null}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>

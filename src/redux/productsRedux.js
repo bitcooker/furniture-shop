@@ -14,6 +14,16 @@ export const getPromoProducts = ({ products }) =>
   products.filter(item => item.promo === 'sale');
 export const getProductByTags = ({ products }, tagId) =>
   products.filter(product => product?.tags.includes(tagId));
+
+export const getSortLowPrice = ({ products }) =>
+  [...products].sort((a, b) => (a.price > b.price ? 1 : -1));
+export const getSortByHighPrice = ({ products }) =>
+  [...products].sort((a, b) => b.price - a.price);
+export const getSortByZ_A = ({ products }) =>
+  [...products].sort((a, b) => b.name.localeCompare(a.name));
+export const getSortByA_Z = ({ products }) =>
+  [...products].sort((a, b) => a.name.localeCompare(b.name));
+
 /* action name creator */
 const reducerName = 'cart';
 const createActionName = name => `app/${reducerName}/${name}`;

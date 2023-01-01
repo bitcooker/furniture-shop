@@ -55,13 +55,11 @@ const Brands = () => {
         <div onClick={prevPart} className={`border m-3 ${styles.arrow}`}>
           <span className='text-muted'>{'<'}</span>
         </div>
-        <div className='row d-flex align-item-center  m-3 text-center'>
+        <div className='row d-flex align-item-center text-center'>
           {activeBrands[active].map(item => (
-            <div key={item} className='col border m-2'>
+            <div key={item} className={`col border ${styles.imageContainer}`}>
               <img
-                className={`${styles.image} ${
-                  animation ? styles.fadeOut : styles.fadeIn
-                }`}
+                className={`${animation ? styles.fadeOut : styles.fadeIn}`}
                 src={`${process.env.PUBLIC_URL}/images/brands/${item.photo}`}
                 alt='brand logo'
               />

@@ -1,4 +1,6 @@
 import React from 'react';
+import { getCartCount } from '../../../redux/cartRedux';
+import { useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 
 import styles from './CompanyClaim.module.scss';

@@ -2,8 +2,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getAll } from '../../../redux/productsRedux';
 import Filters from '../../common/Filters/Filters';
+import {
+  getAll,
+  getSortByZ_A,
+  getSortByHighPrice,
+  getSortByA_Z,
+  getSortLowPrice,
+} from '../../../redux/productsRedux';
 import Banner from '../Banner/Banner';
 import styles from './ProductList.module.scss';
 import ProductListItem from './ProductListItem/ProductListItem';
@@ -12,11 +18,32 @@ const ProductList = () => {
   const { categoryId } = useParams();
   const allProducts = useSelector(getAll);
 
-  const [counter, setCounter] = useState(6);
+  const LOW_PRICE = useSelector(getSortLowPrice);
+  const HIGH_PRICE = useSelector(getSortByHighPrice);
+  const SORT_Z_A = useSelector(getSortByZ_A);
+  const SORT_A_Z = useSelector(getSortByA_Z);
 
+  const [counter, setCounter] = useState(6);
+  const [renderAllProducts, setActiveAllProducts] = useState(LOW_PRICE);
+  const [isShown, setIsShown] = useState(false);
   const handleCounter = value => {
     setCounter(value);
   };
+
+  const handleOption = value => {
+    setActiveAllProducts(
+      value === 'lowest'
+        ? LOW_PRICE
+        : value === 'highest'
+        ? HIGH_PRICE
+        : value === 'sort_A_Z'
+        ? SORT_A_Z
+        : value === 'sort_Z_A'
+        ? SORT_Z_A
+        : allProducts
+    );
+  };
+
   return (
     <div className={styles.root}>
       <div className='container'>
@@ -31,16 +58,16 @@ const ProductList = () => {
             <div className={styles.sortLine}>
               <h4>{categoryId}</h4>
               <div className={styles.sortLineRight}>
-                <form>
+                <form onChange={e => handleOption(e.target.value)}>
                   <label>
                     Sort By
                     <select>
-                      <option value='lowest'>Price: Lowest price</option>
-                      <option value='highest'>Price: Highest price</option>
-                      <option selected value='mostPurchased'>
-                        Most purchased
+                      <option selected value='lowest'>
+                        Price: Lowest price
                       </option>
-                      <option value='mostFavorites'>Most Favorites</option>
+                      <option value='highest'>Price: Highest price</option>
+                      <option value='sort_A_Z'>Sort: A-Z</option>
+                      <option value='sort_Z_A'>Sort: Z-A</option>
                     </select>
                   </label>
                 </form>
@@ -58,7 +85,7 @@ const ProductList = () => {
                 </form>
               </div>
             </div>
-            {allProducts.map(
+            {renderAllProducts.map(
               (product, index) =>
                 index < counter && (
                   <ProductListItem
@@ -74,6 +101,16 @@ const ProductList = () => {
                   />
                 )
             )}
+            <div className={styles.loadMore}>
+              <button
+                className={isShown ? styles.active : styles.button}
+                onClick={() => handleCounter(counter + counter)}
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)}
+              >
+                LOAD MORE
+              </button>
+            </div>
           </div>
           <div className='col-3'>
             <Filters />
