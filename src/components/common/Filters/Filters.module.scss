@@ -1,0 +1,54 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  margin-top: 40px;
+}
+
+.dots {
+  height: 25px;
+  width: 25px;
+  background-color: $color-grey-160;
+  border-radius: 50%;
+  color: $white;
+  text-align: center;
+}
+
+.line {
+  border-bottom: 2px solid $productBox-line-border-color;
+  position: relative;
+}
+
+.priceRange {
+  border: 2px solid $color-grey-710;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.tags {
+  border: 1px solid $color-grey-710;
+  position: relative;
+  color: $color-grey-710;
+  padding: 4px;
+  margin: 6px;
+}
+
+.red {
+  @include box;
+  background-color: red;
+}
+
+.blue {
+  @include box;
+  background-color: blue;
+}
+
+.black {
+  @include box;
+  background-color: black;
+}
+
+.yellow {
+  @include box;
+  background-color: yellow;
+}

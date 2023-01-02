@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Filters from '../../common/Filters/Filters';
 import {
   getAll,
   getSortByZ_A,
@@ -9,7 +10,6 @@ import {
   getSortByA_Z,
   getSortLowPrice,
 } from '../../../redux/productsRedux';
-import Button from '../../common/Button/Button';
 import Banner from '../Banner/Banner';
 import styles from './ProductList.module.scss';
 import ProductListItem from './ProductListItem/ProductListItem';
@@ -113,7 +113,7 @@ const ProductList = () => {
             </div>
           </div>
           <div className='col-3'>
-            <h5>Filter by categories</h5>
+            <Filters />
           </div>
         </div>
       </div>

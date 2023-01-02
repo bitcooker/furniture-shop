@@ -219,3 +219,12 @@ $position-end: 20%;
     }
   }
 }
+
+// Filters colorBox
+
+@mixin box {
+  width: 15px;
+  height: 15px;
+  border-radius: 15%;
+  margin: 5px;
+}
