@@ -33,34 +33,22 @@
   margin: 6px;
 }
 
-.redBox {
-  width: 15px;
-  height: 15px;
-  border-radius: 15%;
-  margin: 5px;
+.red {
+  @include box;
   background-color: red;
 }
 
-.blueBox {
-  width: 15px;
-  height: 15px;
-  border-radius: 15%;
-  margin: 5px;
+.blue {
+  @include box;
   background-color: blue;
 }
 
-.blackBox {
-  width: 15px;
-  height: 15px;
-  border-radius: 15%;
-  margin: 5px;
+.black {
+  @include box;
   background-color: black;
 }
 
-.yellowBox {
-  width: 15px;
-  height: 15px;
-  border-radius: 15%;
-  margin: 5px;
+.yellow {
+  @include box;
   background-color: yellow;
 }

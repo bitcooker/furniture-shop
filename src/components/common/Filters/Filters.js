@@ -101,19 +101,19 @@ const Filters = () => {
         <div className={styles.line}></div>
         <div className=' mt-3 mx-1'>
           <div className='col d-flex '>
-            <div className={styles.redBox}></div>
+            <div className={styles.red}></div>
             <p>Red</p>
           </div>
           <div className='col d-flex '>
-            <div className={styles.blueBox}></div>
+            <div className={styles.blue}></div>
             <p>Blue</p>
           </div>
           <div className='col d-flex'>
-            <div className={styles.blackBox}></div>
+            <div className={styles.black}></div>
             <p>Black</p>
           </div>
           <div className='col d-flex'>
-            <div className={styles.yellowBox}></div>
+            <div className={styles.yellow}></div>
             <p>Yellow</p>
           </div>
         </div>
